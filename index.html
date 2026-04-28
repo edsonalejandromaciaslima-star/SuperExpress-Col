@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Super Express | Tu súper premium a domicilio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === DISEÑO PREMIUM UI/UX (INTACTO) === */
+        :root {
+            --primary: #2563EB; 
+            --primary-dark: #1D4ED8;
+            --secondary: #0F172A;
+            --bg-color: #F8FAFC; 
+            --surface: #FFFFFF;
+            --text-dark: #1E293B; 
+            --text-light: #64748B;
+            --danger: #EF4444;
+            --success: #10B981; 
+            --warning: #F59E0B;
+            --border: #E2E8F0;
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+            --safe-area-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: calc(80px + var(--safe-area-bottom)); -webkit-font-smoothing: antialiased; }
+        
+        button { cursor: pointer; border: none; outline: none; transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s; }
+        button:active { transform: scale(0.95); }
+
+        header { 
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px);
+            padding: 16px 20px; position: sticky; top: 0; z-index: 100; 
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; 
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--secondary); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;}
+        .logo span { color: var(--primary); }
+        
+        .cart-btn { 
+            background-color: var(--bg-color); color: var(--secondary); 
+            padding: 10px; border-radius: 50%; font-weight: 600; 
+            display: flex; align-items: center; justify-content: center; position: relative;
+            border: 1px solid var(--border);
+        }
+        .cart-btn:hover { background-color: var(--border); }
+        .cart-count-badge { 
+            position: absolute; top: -5px; right: -5px;
+            background: var(--primary); color: white; padding: 2px 6px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; border: 2px solid white;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        
+        .search-bar { width: 100%; margin-top: 16px; position: relative; }
+        .search-bar input { 
+            width: 100%; padding: 14px 16px 14px 44px; 
+            border: 1px solid transparent; border-radius: var(--radius-lg); 
+            font-size: 15px; background-color: #F1F5F9; transition: all 0.3s;
+            font-weight: 500;
+        }
+        .search-bar input:focus { border-color: var(--primary); outline: none; background-color: var(--surface); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1); }
+        .search-bar input::placeholder { color: #94A3B8; }
+        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
+
+        .hero { 
+            background: var(--secondary); color: white; padding: 40px 20px 50px; text-align: center; 
+            border-radius: 0 0 32px 32px; margin-bottom: 20px;
+            background-image: radial-gradient(circle at top right, #334155, transparent 40%);
+        }
+        .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; letter-spacing: -1px;}
+        .hero p { font-size: 15px; opacity: 0.8; margin-bottom: 24px; font-weight: 400; max-width: 400px; margin-inline: auto;}
+        .schedule-badge { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 10px 20px; border-radius: 30px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; border: 1px solid rgba(255,255,255,0.1); }
+
+        .service-notice { 
+            background: var(--surface); padding: 24px 20px; margin: -30px 20px 24px 20px; 
+            border-radius: var(--radius-xl); box-shadow: var(--shadow-md);
+            text-align: center; position: relative; z-index: 10;
+        }
+        .service-notice-icon { font-size: 28px; margin-bottom: 12px; }
+        .service-notice h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--secondary);}
+        .service-notice p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+        .container { padding: 0 20px 20px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 20px; font-weight: 800; margin-bottom: 16px; color: var(--secondary); }
+        
+        .categories { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 8px; scrollbar-width: none; }
+        .categories::-webkit-scrollbar { display: none; }
+        .cat-btn { background: var(--surface); color: var(--text-light); border: 1px solid var(--border); padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 600; white-space: nowrap; box-shadow: var(--shadow-sm); }
+        .cat-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        @media (min-width: 768px) { .products-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+        @media (min-width: 1024px) { .products-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+        
+        .product-card { background: var(--surface); border-radius: var(--radius-xl); padding: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); display: flex; flex-direction: column; transition: all 0.3s ease; position: relative; }
+        .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: #CBD5E1;}
+        
+        .img-container { width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 12px; background: #F8FAFC; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .img-container:hover .product-img { transform: scale(1.05); }
+        
+        .product-info-area { cursor: pointer; flex-grow: 1; display: flex; flex-direction: column;}
+        .product-category-tag { font-size: 11px; color: var(--text-light); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.5px;}
+        .product-title { font-size: 14px; margin-bottom: 8px; font-weight: 700; line-height: 1.3; color: var(--secondary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: auto;}
+        .product-price { font-size: 18px; font-weight: 800; color: var(--secondary); }
+        
+        .add-btn { background: #F1F5F9; color: var(--primary); padding: 12px; border-radius: var(--radius-md); width: 100%; font-weight: 700; font-size: 14px; display: flex; justify-content: center; align-items: center; gap: 6px; transition: all 0.3s;}
+        .add-btn.added { background: var(--success) !important; color: white !important; transform: scale(1.05); }
+
+        /* === MODAL DE PRODUCTO === */
+        .product-modal { position: fixed; bottom: -100%; left: 0; width: 100%; height: 85vh; background: var(--surface); border-radius: 32px 32px 0 0; z-index: 400; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
+        @media (min-width: 768px) { .product-modal { height: auto; max-height: 90vh; width: 450px; left: 50%; bottom: 50%; transform: translate(-50%, 50%) scale(0.9); opacity: 0; pointer-events: none; border-radius: var(--radius-xl); transition: 0.3s ease; } .product-modal.show-desktop { transform: translate(-50%, 50%) scale(1); opacity: 1; pointer-events: auto; } }
+        .pm-drag-handle { width: 40px; height: 5px; background: #E2E8F0; border-radius: 10px; margin: 12px auto; }
+        @media (min-width: 768px) { .pm-drag-handle { display: none; } }
+        
+        .pm-content { overflow-y: auto; padding: 0 24px 24px; flex-grow: 1; }
+        .pm-image-container { width: 100%; aspect-ratio: 1; border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 24px; background: #F8FAFC; }
+        .pm-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .pm-category { display: inline-block; padding: 6px 12px; background: #EFF6FF; color: var(--primary); border-radius: 8px; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;}
+        .pm-title { font-size: 24px; font-weight: 800; color: var(--secondary); margin-bottom: 8px; line-height: 1.2; }
+        .pm-price { font-size: 28px; font-weight: 800; color: var(--secondary); margin-bottom: 16px; }
+        .pm-desc-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; margin-top: 24px;}
+        .pm-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; }
+        
+        .pm-footer { padding: 20px 24px max(20px, var(--safe-area-bottom)); background: var(--surface); border-top: 1px solid var(--border); border-radius: 0 0 var(--radius-xl) var(--radius-xl); display: flex; gap: 12px;}
+        .pm-btn-close { width: 50px; height: 50px; border-radius: var(--radius-md); background: #F1F5F9; color: var(--text-dark); display: flex; align-items: center; justify-content: center; font-size: 20px;}
+        .pm-btn-add { flex-grow: 1; background: var(--primary); color: white; border-radius: var(--radius-md); font-weight: 700; font-size: 16px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        .pm-btn-add.success { background: var(--success); transform: scale(1.02); }
+        
+        /* TABS Y CONTROLES DEL MODAL */
+        .pm-equivalency { font-size: 13px; color: var(--primary); font-weight: 600; margin-bottom: 16px; display: inline-block; background: #EFF6FF; padding: 8px 12px; border-radius: 8px;}
+        .pm-mode-toggle { display: flex; background: #F1F5F9; border-radius: var(--radius-lg); padding: 4px; margin-bottom: 16px; }
+        .pm-mode-btn { flex: 1; padding: 12px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; color: var(--text-light); background: transparent; transition: 0.3s; text-align: center; }
+        .pm-mode-btn.active { background: var(--surface); color: var(--primary); box-shadow: var(--shadow-sm); }
+        .pm-options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .pm-option-btn { border: 2px solid var(--border); background: var(--surface); padding: 12px; border-radius: var(--radius-md); text-align: center; font-weight: 600; font-size: 14px; color: var(--text-light); transition: all 0.2s; }
+        .pm-option-btn.active { border-color: var(--primary); background: #EFF6FF; color: var(--primary); }
+        .pm-qty-standard { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; justify-content: center;}
+        .pm-qty-btn { width: 44px; height: 44px; border-radius: 50%; background: #F1F5F9; font-size: 22px; font-weight: bold; color: var(--secondary); display: flex; align-items: center; justify-content: center; }
+        .pm-qty-number { font-size: 22px; font-weight: 800; color: var(--secondary); width: 40px; text-align: center;}
+        .pm-estimate-text { font-size: 13px; font-weight: 600; color: var(--primary); margin-bottom: 20px; display: block; text-align: center;}
+        .pm-deli-custom { margin-top: 10px; display: none; }
+        .pm-deli-custom input { width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); font-size: 15px; outline: none; transition: 0.3s; font-weight: 600;}
+        .pm-deli-custom input:focus { border-color: var(--primary); }
+
+        .toast-container { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; width: 90%; max-width: 400px;}
+        .toast { background: var(--secondary); color: white; padding: 16px 20px; border-radius: var(--radius-lg); font-size: 14px; font-weight: 600; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px; animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, fadeOut 0.3s ease 2.5s forwards; }
+        .toast-icon { background: var(--success); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); z-index: 200; opacity: 0; transition: opacity 0.3s; }
+        .side-modal { position: fixed; top: 0; right: -100%; width: 100%; max-width: 420px; height: 100%; background: var(--bg-color); z-index: 300; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,0.1); }
+        
+        .modal-header { padding: 20px 24px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h3 { font-size: 20px; font-weight: 800; color: var(--secondary); }
+        .close-btn { background: #F1F5F9; color: var(--text-dark); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+        
+        .modal-body { flex: 1; overflow-y: auto; padding: 24px; }
+        
+        .cart-items { display: flex; flex-direction: column; gap: 16px; }
+        .cart-item { background: var(--surface); padding: 16px; border-radius: var(--radius-xl); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .cart-item-info { flex: 1; padding-right: 12px; }
+        .cart-item-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--secondary);}
+        .cart-item-price { font-weight: 800; color: var(--secondary); font-size: 16px; }
+        .cart-controls { display: flex; align-items: center; gap: 12px; background: #F8FAFC; padding: 6px; border-radius: 30px; border: 1px solid var(--border);}
+        .qty-btn { background: white; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; color: var(--secondary); box-shadow: var(--shadow-sm); font-size: 16px;}
+        
+        input.qty-input::-webkit-inner-spin-button, input.qty-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input.qty-input { -moz-appearance: textfield; font-weight: 700; font-size: 15px; width: 45px; text-align: center; border: none; background: transparent; outline: none; color: var(--secondary); }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.5px;}
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 1px solid #CBD5E1; border-radius: var(--radius-md); font-size: 15px; background: var(--surface); transition: all 0.2s; font-weight: 500;}
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        .form-row { display: flex; gap: 12px; }
+        .form-row .form-group { flex: 1; }
+        
+        .warning-zone { background: #FEF2F2; color: #B91C1C; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid #FECACA; font-size: 13px; margin-top: 8px; display: none; font-weight: 600; display: flex; gap: 8px; align-items: flex-start;}
+        .payment-info { background: #EFF6FF; padding: 16px; border-radius: var(--radius-md); font-size: 14px; margin-top: 8px; display: none; border: 1px solid #BFDBFE; color: #1E3A8A; line-height: 1.5;}
+
+        .cart-footer { padding: 24px 24px calc(24px + var(--safe-area-bottom)); background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 15px rgba(0,0,0,0.02);}
+        .summary-row { display: flex; justify-content: space-between; font-size: 15px; color: var(--text-light); margin-bottom: 12px; font-weight: 500;}
+        .summary-row.total { font-size: 20px; font-weight: 800; color: var(--secondary); margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--border); }
+        
+        .btn-block { width: 100%; padding: 16px; border-radius: var(--radius-lg); font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+        .btn-checkout { background: var(--secondary); color: white; }
+        .btn-clear { background: transparent; color: var(--text-light); font-size: 14px; padding: 10px; }
+        .btn-clear:hover { color: var(--danger); }
+        
+        .btn-whatsapp { background: #25D366; color: white; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 16px; }
+        .btn-whatsapp:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+
+        footer { text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 14px; margin-top: 20px;}
+        footer strong { color: var(--secondary); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" id="store-name-display">Super <span>Express</span></div>
+        <button class="cart-btn" onclick="openCart()">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <span class="cart-count-badge" id="cart-count">0</span>
+        </button>
+        <div class="search-bar">
+            <span class="search-icon">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input type="text" id="searchInput" placeholder="Busca productos..." onkeyup="searchProducts()">
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Tu súper completo,<br>directo a tu puerta.</h1>
+        <p>Precios justos. Haz tu pedido en la mañana, recíbelo por la tarde sin salir de casa.</p>
+        <div class="schedule-badge">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Entregas Hoy: | 2:00 PM - 3:00 PM | 3:30 PM - 4:30 PM | 5:00 PM - 6:00 PM | 6:30 PM - 7:30 PM | 8:00 PM - 9:45 PM |
+        </div>
+    </div>
+
+    <div class="service-notice">
+        <div class="service-notice-icon">✨</div>
+        <h3>Calidad y Confianza</h3>
+        <p>Seleccionamos cuidadosamente tus productos directamente en tienda física, cuidando la calidad de cada artículo, y te los llevamos hasta la puerta de tu hogar con rapidez y confianza.</p>
+    </div>
+
+    <main class="container">
+        <h2 class="section-title">Explorar Catálogo</h2>
+        <div class="categories" id="category-list"></div>
+        <div class="products-grid" id="products-container"></div>
+    </main>
+
+    <footer>
+        <p><strong>Super Express</strong> &copy; 2026</p>
+        <p style="margin-top: 8px;">📍 Servicio exclusivo en zonas seleccionadas.</p>
+    </footer>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="modal-overlay" id="pm-overlay" onclick="closeProductModal(event)"></div>
+    <div class="product-modal" id="product-modal">
+        <div class="pm-drag-handle"></div>
+        <div class="pm-content">
+            <div class="pm-image-container">
+                <img id="pm-img" src="" alt="Producto">
+            </div>
+            <span class="pm-category" id="pm-category">Categoría</span>
+            <h2 class="pm-title" id="pm-title">Nombre del Producto</h2>
+            <div class="pm-equivalency" id="pm-equivalency"></div>
+            <div class="pm-price" id="pm-price">$0.00</div>
+            
+            <div id="pm-dynamic-controls"></div>
+
+            <h4 class="pm-desc-title">Detalles del producto</h4>
+            <p class="pm-desc" id="pm-desc">Descripción detallada del producto irá aquí.</p>
+        </div>
+        <div class="pm-footer">
+            <button class="pm-btn-close" onclick="forceCloseModal()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <button class="pm-btn-add" id="pm-btn-add" onclick="addFromModal()">
+                <span id="pm-btn-text">Agregar al Carrito</span>
+                <span id="pm-btn-price" style="display:none; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 6px; font-size: 14px; margin-left:8px;">$0.00</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="overlay" onclick="closeModals()"></div>
+    
+    <div class="side-modal" id="cart-modal">
+        <div class="modal-header">
+            <h3>Mi Carrito</h3>
+            <button class="close-btn" onclick="closeModals()">✕</button>
+        </div>
+        <div class="modal-body cart-items" id="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Costo de envío</span>
+                <span id="cart-delivery">$0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="btn-block btn-checkout" onclick="openCheckout()">Continuar al Checkout</button>
+            <button class="btn-block btn-clear" onclick="clearCart(true)">Vaciar carrito</button>
+        </div>
+    </div>
+
+    <div class="side-modal" id="checkout-modal">
+        <div class="modal-header">
+            <h3>Checkout</h3>
+            <button class="close-btn" onclick="closeModals()">✕</button>
+        </div>
+        <div class="modal-body checkout-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" id="c-name" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono (10 dígitos) *</label>
+                    <input type="tel" id="c-phone" placeholder="Ej. 3121234567" maxlength="10" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Calle *</label>
+                    <input type="text" id="c-street" placeholder="Ej. Av. de los Insurgentes" required>
+                </div>
+                <div class="form-group">
+                    <label>Núm Ext/Int *</label>
+                    <input type="text" id="c-address" placeholder="Ej. #123 Int. 4" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Colonia / Zona *</label>
+                <select id="c-colonia" onchange="checkZone()" required>
+                    <option value="">Selecciona tu zona...</option>
+                </select>
+                <div class="warning-zone" id="zone-warning">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span>Lo sentimos, actualmente solo entregamos en las zonas listadas.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Referencias de entrega *</label>
+                <input type="text" id="c-references" placeholder="Ej. Casa blanca con portón negro" required>
+            </div>
+            <div class="form-group">
+                <label>Método de Pago *</label>
+                <select id="c-payment" onchange="updatePaymentInfo()" required>
+                    <option value="">¿Cómo deseas pagar?</option>
+                    <option value="Efectivo">💵 Efectivo al recibir</option>
+                    <option value="Terminal">💳 Tarjeta (Solo tarjetas con NFC. Proximidad)</option>
+                    <option value="Transferencia">📱 Transferencia Electrónica</option>
+                </select>
+                <div class="payment-info" id="payment-info"></div>
+            </div>
+            <div class="form-group">
+                <label>Hora de entrega deseada *</label>
+                <select id="c-time" required>
+                    <option value="">Selecciona un horario...</option>
+                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                    <option value="3:30 PM - 4:30 PM">3:30 PM - 4:30 PM</option>
+                    <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+                    <option value="6:30 PM - 7:30 PM">6:30 PM - 7:30 PM</option>
+                    <option value="8:00 PM - 9:45 PM">8:00 PM - 9:45 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Notas para el pedido (Opcional)</label>
+                <textarea id="c-notes" rows="2" placeholder="Ej. Por favor que los plátanos no estén tan maduros..."></textarea>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <button class="btn-block btn-whatsapp" id="btn-send-wa" onclick="sendOrder()">
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.646.832 5.127 2.375 7.227L.344 24l4.906-1.953A11.95 11.95 0 0012.031 24c6.648 0 12.031-5.383 12.031-12.031C24.062 5.383 18.679 0 12.031 0zm3.64 17.516c-.546 1.547-2.671 1.937-3.655 1.937-1.469 0-3.328-.844-5.344-2.859-2.016-2.016-2.859-3.875-2.859-5.344 0-.984.39-3.11 1.937-3.656.406-.14.86-.062 1.156.234l1.375 1.844c.266.36.266.86-.016 1.203l-.687.828c-.14.172-.156.422-.016.61 1.094 1.484 2.516 2.906 4 4 .188.14.438.125.61-.016l.828-.687c.344-.282.844-.282 1.203-.016l1.844 1.375c.296.296.375.75.234 1.156z"/></svg>
+                Hacer Pedido por WhatsApp
+            </button>
+            <button class="btn-block btn-clear" onclick="backToCart()">← Volver al carrito</button>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            storeName: "Super Express",
+            whatsappNumber: "523123092338", 
+            bankDetails: "<strong>Institucion:</strong> Mercado Pago W <br><strong>Beneficiario:</strong>Eduardo Macias Rodriguez <br><strong>CLABE:</strong> 722969020236729758<br><em>*El operador te pedirá la captura de pago por WhatsApp para confirmar.</em>",
+            allowedZones: ["Valle Verde", "Punta Norte", "Albaterra" , "Real Santa Barbara"]
+        };
+
+        const db_products = [
+   // ================= FRUTA/FRESCOS =================
+            { id: 101, name: "Jitomate", price: 61, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/jitomate.png", desc: "Jitomate fresco." },
+{ id: 101, name: "Limon", price: 40, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/limon.png", desc: "Limon fresco." },
+
+            { id: 102, name: "Jitomate cherry", price: 76, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
+            { id: 103, name: "Cebolla", price: 22, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla.png", desc: "Cebolla blanca." },
+            { id: 104, name: "Cebolla morada", price: 23, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla morada.png", desc: "Ideal para cortes finos." },
+            { id: 105, name: "Papa", price: 36, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/papa.png", desc: "Papa blanca." },
+            { id: 106, name: "Tomate verde", price: 35, category: "Frescos", type: "weight", piecesPerKg: 15, img: "img/tomate verde.png", desc: "Fresco de hoja." },
+            { id: 107, name: "Aguacate", price: 64, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/aguacate.png", desc: "Aguacate Hass." },
+            { id: 108, name: "Pepino", price: 25, category: "Frescos", type: "weight", piecesPerKg: 3, img: "img/pepino.png", desc: "Crujiente." },
+            { id: 109, name: "Zanahoria", price: 32, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/zanahoria.png", desc: "Fresa y sin rabo." },
+            { id: 110, name: "Brócoli Corona", price: 65, category: "Frescos", type: "weight", piecesPerKg: 2, img: "img/brocoli corona.png", desc: "Corona Mister Luck." },
+            { id: 111, name: "Champiñón entero", price: 129, category: "Frescos", type: "weight", piecesPerKg: 50, img: "img/champiñones enteros.png", desc: "Fresco a granel." },
+            { id: 112, name: "Col morada", price: 33, category: "Frescos", type: "weight", piecesPerKg: 1, img: "img/col morada.png", desc: "A granel." },
+            { id: 113, name: "Calabaza", price: 30, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/calabaza.png", desc: "Calabacita tierna." },
+            { id: 114, name: "Rábano", price: 50, category: "Frescos", type: "weight", piecesPerKg: 30, img: "img/rabano.png", desc: "A granel." },
+            { id: 115, name: "Chile serrano", price: 79, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/chile serrano.png", desc: "Picante y fresco." },
+            { id: 116, name: "Chile habanero", price: 175, category: "Frescos", type: "weight", piecesPerKg: 60, img: "img/chile habanero.png", desc: "Muy picante." },
+            { id: 117, name: "Chile pasilla verde", price: 86, category: "Frescos", type: "weight", piecesPerKg: 20, img: "img/chile pasilla verde.png", desc: "A granel." },
+            { id: 118, name: "Espinaca a granel", price: 149, category: "Frescos", type: "weight", piecesPerKg: 10, img: "img/espinaca a granel.png", desc: "Fresca bolsas ya hechas." },
+            { id: 119, name: "Chayote", price: 28.50, category: "Frescos", type: "weight", piecesPerKg: 3, img: "img/chayote.png", desc: "Sin espinas." },
+            { id: 120, name: "Ejote", price: 86, category: "Frescos", type: "weight", piecesPerKg: 100, img: "img/ejote.png", desc: "A granel." },
+            { id: 121, name: "Manzana gala", price: 69, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/manzana gala.png", desc: "Dulce y firme." },
+            { id: 122, name: "Manzana granny", price: 64, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/manzana granny.png", desc: "Verde acidita." },
+            { id: 123, name: "Plátano", price: 25, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/platano.png", desc: " Muy fresco." },
+            { id: 124, name: "Plátano manzano", price: 42, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/platano manzano.png", desc: "Pequeño y dulce." },
+            { id: 125, name: "Pera", price: 61, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/pera.png", desc: "Jugosa." },
+            { id: 126, name: "Kiwi", price: 129, category: "Frescos", type: "weight", piecesPerKg: 10, img: "img/kiwi.png", desc: "Importado." },
+            { id: 127, name: "Mango indio", price: 52, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/mango indio.png", desc: "Dulce de temporada." },
+            { id: 128, name: "Mango ataulfo", price: 52, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/Mango ataulfo.png", desc: "Delicioso." },
+            { id: 129, name: "Mandarina", price: 59, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/Mandarina.png", desc: "Jugosa e importada." },
+            { id: 130, name: "Naranja dulce", price: 28, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/Naranja dulce.png", desc: "Para jugo." },
+            { id: 131, name: "Naranja sin semilla", price: 47, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/Naranja sin semillqa.png", desc: "Importada." },
+            
+            // Frutas Gigantes (Fracciones)
+            { id: 132, name: "Piña", price: 27.50, category: "Frescos", type: "fraction", img: "img/piña.png", desc: "Miel.", options: [ {label: "1 Pieza entera", w: 1.5}, {label: "Media pieza", w: 0.75} ] },
+            { id: 133, name: "Melón", price: 33, category: "Frescos", type: "fraction", img: "img/melon.png", desc: "Aromático.", options: [ {label: "1 Pieza entera", w: 1.8}, {label: "Media pieza", w: 0.9} ] },
+            { id: 134, name: "Sandía", price: 20, category: "Frescos", type: "fraction", img: "img/sandia.png", desc: "Rayada.", options: [ {label: "1 Pieza entera", w: 5}, {label: "Media pieza", w: 2.5}, {label: "Cuarto de pieza", w: 1.25} ] },
+            { id: 135, name: "Papaya", price: 24, category: "Frescos", type: "fraction", img: "img/papaya.png", desc: "Maradol.", options: [ {label: "1 Pieza entera", w: 1.8}, {label: "Media pieza", w: 0.9} ] },
+            { id: 137, name: "Lechuga romana", price: 30, category: "Frescos", type: "fraction", img: "img/lechuga romana.png", desc: "Fresa.", options: [{label: "1 Pieza", w: 1}, {label: "Media pieza", w: 0.5}] },
+            
+            // Frescos por piezas (Standard)
+            { id: 138, name: "Cilantro", price: 14, category: "Frescos", type: "standard", img: "img/1.png", desc: "Manojo." },
+            { id: 139, name: "Perejil", price: 13, category: "Frescos", type: "standard", img: "img/2.png", desc: "Manojo." },
+            { id: 140, name: "Hierbabuena", price: 14, category: "Frescos", type: "standard", img: "img/3.png", desc: "Manojo." },
+            { id: 141, name: "Elote amarillo 3 piezas", price: 61, category: "Frescos", type: "standard", img: "img/4.png", desc: "Paquete." },
+            { id: 142, name: "Fresa", price: 66, category: "Frescos", type: "standard", img: "img/5.png", desc: "Cajita." },
+            { id: 143, name: "Frambuesa fresca", price: 46, category: "Frescos", type: "standard", img: "img/6.png", desc: "Cajita." },
+            { id: 144, name: "Arándano fresco 170 g", price: 46, category: "Frescos", type: "standard", img: "img/7.png", desc: "Cajita." },
+            { id: 145, name: "Elote desgranado", price: 24, category: "Frescos", type: "standard", img: "img/8.png", desc: "Bolsa." },
+            { id: 146, name: "Chícharos desvainados", price: 250, category: "Frescos", type: "fraction", img: "", desc: "Aprox 100gr", options: [ {label: "1 Bolsita (100g)", w: 0.1}, {label: "Cuarto (250g)", w: 0.25}, {label: "Medio Kilo", w: 1} ] },
+
+            // ================= LÁCTEOS Y CREMERIA =================
+            { id: 201, name: "Leche Lala 100 tapa dorada 1L", price: 46, category: "Lácteos", type: "standard", img: "img/10.png", desc: "Sin lactosa." },
+            { id: 202, name: "Leche Lala 100 azul 1L", price: 46, category: "Lácteos", type: "standard", img: "img/11.png", desc: "Proteína." },
+            { id: 203, name: "Leche Lala deslactosada 2% 1L", price: 32, category: "Lácteos", type: "standard", img: "img/12.png", desc: "Baja en grasa." },
+            { id: 204, name: "Leche Lala deslactosada 1.8L", price: 56, category: "Lácteos", type: "standard", img: "img/13.png", desc: "Familiar." },
+            { id: 205, name: "Leche Lala entera 350ml", price: 16, category: "Lácteos", type: "standard", img: "img/14.png", desc: "Chica." },
+{ id: 205, name: "Leche Lala entera 1L", price: 35, category: "Lácteos", type: "standard", img: "img/30.png", desc: "Chica." },
+            { id: 206, name: "Leche Santa Clara deslactosada 1L", price: 35, category: "Lácteos", type: "standard", img: "img/15.png", desc: "Fácil digestión." },
+            { id: 207, name: "Santa Clara entera 1L", price: 35, category: "Lácteos", type: "standard", img: "img/16.png", desc: "Clásica." },
+            { id: 208, name: "Santa Clara light 1L", price: 35, category: "Lácteos", type: "standard", img: "img/17.png", desc: "Baja en grasa." },
+            { id: 209, name: "Santa Clara desl light 1L", price: 35, category: "Lácteos", type: "standard", img: "img/18.png", desc: "Doble beneficio." },
+            { id: 210, name: "Leche Sello Rojo 1L", price: 35, category: "Lácteos", type: "standard", img: "img/19.png", desc: "Entera." },
+            { id: 211, name: "Leche Monarca entera 1.8L", price: 50, category: "Lácteos", type: "standard", img: "img/20.png", desc: "Familiar." },
+            { id: 212, name: "Yogurt Chobani mango 190 g", price: 39, category: "Lácteos", type: "standard", img: "img/21.png", desc: "Griego." },
+            { id: 213, name: "Yogurt Chobani Flip Peanut 128 g", price: 36, category: "Lácteos", type: "standard", img: "img/22.png", desc: "Griego con topping." },
+            { id: 214, name: "Yogurt Unicornio 1L", price: 66, category: "Lácteos", type: "standard", img: "img/23.png", desc: "Para niños." },
+            { id: 216, name: "Yakult 3/80ml", price: 25, category: "Lácteos", type: "standard", img: "img/24.png", desc: "Probióticos." },
+            { id: 217, name: "Crema ácida Lala 426 ml", price: 48, category: "Lácteos", type: "standard", img: "img/25.png", desc: "Envase grande." },
+            { id: 218, name: "Crema ácida Lala 200 ml", price: 27, category: "Lácteos", type: "standard", img: "img/31.5.png", desc: "Envase chico." },
+            { id: 220, name: "Media crema Nestlé 225 g", price: 25, category: "Lácteos", type: "standard", img: "img/31.1.png", desc: "Lata." },
+            { id: 221, name: "Philadelphia 180 g", price: 47, category: "Lácteos", type: "standard", img: "img/35.png", desc: "Queso crema." },
+            { id: 222, name: "Mantequilla Lala 90gr", price: 28, category: "Lácteos", type: "standard", img: "img/34.png", desc: "Barra sin sal." },
+            { id: 223, name: "Queso amarillo FUD 130gr", price: 48, category: "Lácteos", type: "standard", img: "img/32.png", desc: "Rebanadas." },
+            { id: 224, name: "Queso panela", price: 74, category: "Lácteos", type: "fraction", img: "img/Panela.png", desc: "Entera.", options: [{label: "1 Pieza", w: 1}, {label: "Media pieza", w: 0.5}] },
+            { id: 225, name: "Queso fresco chico", price: 29, category: "Lácteos", type: "standard", img: "img/qfc.png", desc: "De rancho." },
+            { id: 226, name: "Requesón", price: 33, category: "Lácteos", type: "standard", img: "img/33.png", desc: "Tarrina." },
+            { id: 227, name: "Queso asadero de bola", price: 160, category: "Lácteos", type: "deli", img: "img/asab.png", desc: "Por kilos/gramos." },
+            { id: 228, name: "Queso asadero a granel", price: 150, category: "Lácteos", type: "deli", img: "", desc: "Por kilos/gramos." },
+            { id: 229, name: "Queso semiseco", price: 190, category: "Lácteos", type: "deli", img: "img/ss.png", desc: "Por kilos/gramos." },
+            { id: 230, name: "Queso mozzarella granulado", price: 140, category: "Lácteos", type: "deli", img: "img/gran.png", desc: "Para fundir." },
+            { id: 231, name: "Crema natural", price: 70, category: "Lácteos", type: "deli", img: "img/crema.png", desc: "A granel por litros/ml." },
+            { id: 232, name: "Longaniza", price: 99, category: "Lácteos", type: "deli", img: "img/lon.png", desc: "A granel." },
+            { id: 233, name: "Jamón de pierna a granel", price: 129, category: "Lácteos", type: "deli", img: "png", desc: " similar." },
+            { id: 234, name: "Jamón real pavo", price: 83, category: "Lácteos", type: "standard", img: "img/41.png", desc: "San rafael jamon" },
+            { id: 235, name: "Jamón de pavo Corona 250 g", price: 69, category: "Lácteos", type: "standard", img: "img/42.png", desc: "Empacado." },
+            { id: 236, name: "Jamón de pavo Virginia", price: 99, category: "Lácteos", type: "standard", img: "img/43.png", desc: "Paquete." },
+            { id: 237, name: "Chuleta El Mexicano", price: 67, category: "Lácteos", type: "standard", img: "img/44.png", desc: "Paquete." },
+
+            // === BEBIDAS ===
+            { id: 301, name: "Coca-Cola 2.5L", price: 45, category: "Bebidas", type: "standard", img: "img/C2.5.PNG", desc: "Familiar." },
+            { id: 302, name: "Coca-Cola 2L", price: 42, category: "Bebidas", type: "standard", img: "img/C2.png", desc: "Original." },
+            { id: 303, name: "Coca-Cola 1L", price: 28, category: "Bebidas", type: "standard", img: "img/C1.png", desc: "Mediana." },
+            { id: 304, name: "Coca-Cola 600ml", price: 23, category: "Bebidas", type: "standard", img: "img/C6.png", desc: "Personal." },
+            { id: 305, name: "Coca-Cola 450ml", price: 19, category: "Bebidas", type: "standard", img: "img/C45.png", desc: "Pequeña." },
+            { id: 306, name: "Coca-Cola 300ml", price: 14, category: "Bebidas", type: "standard", img: "img/C3.png", desc: "Mini." },
+            { id: 307, name: "Coca-Cola sin azúcar 2L", price: 38, category: "Bebidas", type: "standard", img: "img/CS2.png", desc: "Sin calorías." },
+            { id: 308, name: "Coca-Cola light 1L", price: 26, category: "Bebidas", type: "standard", img: "img/Cl1.png", desc: "Light." },
+            { id: 309, name: "Coca-Cola 355ml sin azúcar", price: 22, category: "Bebidas", type: "standard", img: "img/CS35.png", desc: "Lata." },
+            { id: 310, name: "Sprite 2L", price: 32, category: "Bebidas", type: "standard", img: "img/sprite.png", desc: "Lima limón." },
+            { id: 311, name: "Sprite 1.75L", price: 28, category: "Bebidas", type: "standard", img: "img/1.75.png", desc: "Mediano." },
+            { id: 312, name: "Sprite 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/s6.png", desc: "Personal." },
+            { id: 313, name: "Sprite 300ml", price: 12, category: "Bebidas", type: "standard", img: "img/s3.png", desc: "Mini." },
+            { id: 314, name: "Sprite sin azúcar 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/ss6.png", desc: "Zero." },
+            { id: 315, name: "Squirt 2L", price: 40, category: "Bebidas", type: "standard", img: "img/sq2l.png", desc: "Toronja." },
+            { id: 316, name: "Squirt sin azúcar 2L", price: 39, category: "Bebidas", type: "standard", img: "img/sqs2.png", desc: "Toronja light." },
+            { id: 317, name: "Squirt 600ml", price: 19, category: "Bebidas", type: "standard", img: "img/sq6.png", desc: "Personal." },
+            { id: 318, name: "Sidral 1L", price: 24, category: "Bebidas", type: "standard", img: "img/sd1.png", desc: "Manzana." },
+            { id: 319, name: "Mundet 2L", price: 32, category: "Bebidas", type: "standard", img: "img/m2l.png", desc: "Manzana rojo." },
+            { id: 320, name: "Manzanita Sol 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/ma6.png", desc: "Manzana." },
+            { id: 321, name: "Fanta naranja 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/f6.png", desc: "Naranja." },
+            { id: 322, name: "Fresca 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/fr6.png", desc: "Toronja rosa." },
+            { id: 323, name: "Peñafiel mineral 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/pm6.png", desc: "Agua mineral." },
+            { id: 324, name: "Peñafiel naranjada 2L", price: 36, category: "Bebidas", type: "standard", img: "img/np2.png", desc: "Refresco." },
+            { id: 325, name: "Peñafiel Twist limón 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/pwl.png", desc: "Mineral con limón." },
+            { id: 326, name: "Naranjada SR 1L", price: 31, category: "Bebidas", type: "standard", img: "img/nsr.png", desc: "Jugo." },
+            { id: 327, name: "Topo Chico 1.5L", price: 41, category: "Bebidas", type: "standard", img: "img/t1.5.png", desc: "Agua mineral." },
+            { id: 328, name: "Topo Chico 600ml", price: 23, category: "Bebidas", type: "standard", img: "img/t6.png", desc: "Mineral botella." },
+            { id: 329, name: "Topo Chico limón 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/tl.png", desc: "Sabor limón." },
+            { id: 330, name: "Topo Chico toronja", price: 22, category: "Bebidas", type: "standard", img: "img/tt.png", desc: "Sabor toronja." },
+            { id: 331, name: "Agua Colimán 1L", price: 27, category: "Bebidas", type: "standard", img: "img/rc.png", desc: "Especificar sabor, preguntar disponibilidad." },
+            { id: 332, name: "Agua Ciel 5L", price: 36, category: "Bebidas", type: "standard", img: "img/c5.png", desc: "Garrafón chico." },
+            { id: 333, name: "Agua Frescolima 1L", price: 29, category: "Bebidas", type: "standard", img: "img/fres.png", desc: "Especificar sabor y preguntar disponibilidad." },
+            { id: 334, name: "Skarch 750 ml", price: 14, category: "Bebidas", type: "standard", img: "img/s75.png", desc: "Agua natural." },
+            { id: 335, name: "Agua de coco 1L", price: 56, category: "Bebidas", type: "standard", img: "", desc: "Natural." },
+            { id: 336, name: "Fuze Tea durazno 1L", price: 31, category: "Bebidas", type: "standard", img: "IMG/FZ1.PNG", desc: "Té frío." },
+            { id: 337, name: "Fuze Tea durazno 600ml", price: 24, category: "Bebidas", type: "standard", img: "IMG/FZ6.PNG", desc: "Té frío personal." },
+            { id: 338, name: "Fuze Tea limón 600ml", price: 24, category: "Bebidas", type: "standard", img: "IMG/FZL.PNG", desc: "Té frío personal." },
+            { id: 339, name: "Jugo Ades manzana 945ml", price: 34, category: "Bebidas", type: "standard", img: "IMG/AD.PNG", desc: "Soya y jugo." },
+            { id: 340, name: "Electrolit uva 625ml", price: 29, category: "Bebidas", type: "standard", img: "IMG/E6.PNG", desc: "Suero." },
+            { id: 341, name: "Red Bull 250ml", price: 40, category: "Bebidas", type: "standard", img: "IMG/RED.PNG", desc: "Energizante." },
+            { id: 342, name: "Monster 473ml", price: 46, category: "Bebidas", type: "standard", img: "IMG/MONSTER.PNG", desc: "Energizante verde." },
+            { id: 343, name: "Sangría Casera 2L", price: 41, category: "Bebidas", type: "standard", img: "IMG/SANGRIA.PNG", desc: "Sabor sangría." },
+            { id: 345, name: "Zuko tamarindo", price: 12, category: "Bebidas", type: "standard", img: "img/z.PNG", desc: "Polvo para preparar." },
+
+            // === SNACKS Y PANADERÍA ===
+ { id: 136, name: "Lechuguilla chica", price: 13, category: "Snacks", type: "standard", img: "IMG/L.PNG", desc: "Distintos sabores.", options: [{label: "1 Pieza", w: 1}] },
+            { id: 401, name: "Sabritas sal 171g", price: 58, category: "Snacks", type: "standard", img: "IMG/S1.PNG", desc: "Bolsa familiar." },
+            { id: 402, name: "Sabritas sal 74g", price: 30, category: "Snacks", type: "standard", img: "IMG/S7.PNG", desc: "Bolsa mediana." },
+            { id: 403, name: "Sabritas sal 42g", price: 26, category: "Snacks", type: "standard", img: "IMG/S4.PNG", desc: "Bolsa chica." },
+            { id: 404, name: "Sabritas Limón 46g", price: 25, category: "Snacks", type: "standard", img: "IMG/LI.PNG", desc: "Con sal y limón." },
+            { id: 405, name: "Sabritas adobadas 48g", price: 25, category: "Snacks", type: "standard", img: "IMG/SA.PNG", desc: "Clásicas." },
+            { id: 406, name: "Ruffles queso 120g", price: 44, category: "Snacks", type: "standard", img: "IMG/R.PNG", desc: "Onduladas." },
+            { id: 407, name: "Doritos Nacho 223g", price: 60, category: "Snacks", type: "standard", img: "IMG/D.PNG", desc: "Bolsa grande." },
+            { id: 408, name: "Doritos incognita 61g", price: 24, category: "Snacks", type: "standard", img: "IMG/DI.PNG", desc: "Sabor misterio." },
+            { id: 409, name: "Doritos harina 500g", price: 44, category: "Snacks", type: "standard", img: "IMG/DH.PNG", desc: "Bolsa." },
+            { id: 410, name: "Cheetos torciditos 120g", price: 29, category: "Snacks", type: "standard", img: "IMG/CH.PNG", desc: "De queso." },
+            { id: 411, name: "Cheetos bolita 46g", price: 23, category: "Snacks", type: "standard", img: "IMG/B.PNG", desc: "De queso." },
+            { id: 412, name: "Cheetos PUFF 44g", price: 23, category: "Snacks", type: "standard", img: "IMG/PF.PNG", desc: "De queso." },
+            { id: 413, name: "Crujitos 42g", price: 12, category: "Snacks", type: "standard", img: "IMG/CRUJI.PNG", desc: "Queso y chile." },
+            { id: 414, name: "Takis Fuego 70g", price: 22, category: "Snacks", type: "standard", img: "IMG/T.PNG", desc: "Rollitos picantes." },
+                     { id: 416, name: "Palomitas ACT naturales", price: 20, category: "Snacks", type: "standard", img: "IMG/ACT.PNG", desc: "Para microondas." },
+            { id: 417, name: "Totopos Yun", price: 36, category: "Snacks", type: "standard", img: "", desc: "Bolsa." },
+            { id: 418, name: "Tostadas Alcaraz 153g", price: 31, category: "Snacks", type: "standard", img: "IMG/AL.PNG", desc: "Caseras." },
+            { id: 419, name: "Tostadas norteñas 40pzas", price: 45, category: "Snacks", type: "standard", img: "img/tn.png", desc: "Paquete." },
+            { id: 420, name: "Papas Festinas naturales 90g", price: 28, category: "Snacks", type: "standard", img: "img/fn.png", desc: "Caseras." },
+            { id: 421, name: "Miss Bananitas platanitos", price: 27, category: "Snacks", type: "standard", img: "", desc: "Fritos dulces." },
+            { id: 422, name: "Mini Chokis 42g", price: 12, category: "Snacks", type: "standard", img: "", desc: "Galletas con chispas." },
+            { id: 423, name: "Pingüinos Hershey 80g", price: 24, category: "Snacks", type: "standard", img: "", desc: "Pastelitos." },
+            { id: 424, name: "Galleta Lancelot", price: 51, category: "Snacks", type: "standard", img: "", desc: "Surtido." },
+            { id: 425, name: "Caja de galletas Trinidad", price: 46, category: "Snacks", type: "standard", img: "", desc: "Surtido rico." },
+            { id: 426, name: "Gomilocas dientes", price: 19, category: "Snacks", type: "standard", img: "", desc: "Gomitas dulces." },
+            { id: 427, name: "Cranky mini 15g", price: 7, category: "Snacks", type: "standard", img: "", desc: "Chocolate con arroz." },
+            { id: 428, name: "Pan Blanco Bimbo 620g", price: 50, category: "Snacks", type: "standard", img: "img/pmm.png", desc: "De caja." },
+            { id: 429, name: "Pan integral 300g Bimbo", price: 29, category: "Snacks", type: "standard", img: "img/p3.png", desc: "Chico." },
+            { id: 430, name: "Pan Integral Bimbo 620g", price: 54, category: "Snacks", type: "standard", img: "img/pi.png", desc: "Grande." },
+            { id: 431, name: "Pan Bimbo Cero Cero 610g", price: 65, category: "Snacks", type: "standard", img: "img/bimbo cero cero.png", desc: "Sin azúcar." },
+      
+            { id: 433, name: "Pan dulce (pieza)", price: 12, category: "Snacks", type: "standard", img: "", desc: "Surtido local." },
+            { id: 434, name: "Concha", price: 15, category: "Snacks", type: "standard", img: "", desc: "Vainilla o chocolate." },
+            { id: 435, name: "Bolillo", price: 14, category: "Snacks", type: "standard", img: "", desc: "Pieza." },
+            { id: 436, name: "Bolillito", price: 14, category: "Snacks", type: "standard", img: "", desc: "Pieza chica." },
+            { id: 437, name: "Telera", price: 18, category: "Snacks", type: "standard", img: "", desc: "Pieza para torta." },
+            { id: 438, name: "Rol canela", price: 45, category: "Snacks", type: "standard", img: "", desc: "Horneado." },
+            { id: 439, name: "Panqué de zanahoria", price: 21, category: "Snacks", type: "standard", img: "", desc: "Rebanada." },
+            { id: 440, name: "Panqué de nuez", price: 20, category: "Snacks", type: "standard", img: "", desc: "Rebanada." },
+            { id: 441, name: "Pay de Queso", price: 20, category: "Snacks", type: "standard", img: "", desc: "Rebanada individual." },
+            { id: 442, name: "Tamal de ceniza", price: 25, category: "Snacks", type: "standard", img: "", desc: "Calientito." },
+            { id: 443, name: "Tamal de elote", price: 25, category: "Snacks", type: "standard", img: "", desc: "Dulce." },
+            { id: 444, name: "Empanada", price: 23, category: "Snacks", type: "standard", img: "", desc: "Sujeto a disponibilidad." },
+            { id: 445, name: "Crepa mediana", price: 59, category: "Snacks", type: "standard", img: "", desc: "Preparada." },
+            { id: 446, name: "Arroz con leche Majoantojo", price: 27, category: "Snacks", type: "standard", img: "", desc: "Postre frío." },
+            { id: 447, name: "Yakimeshi", price: 160, category: "Snacks", type: "standard", img: "", desc: "Comida preparada." },
+
+            // === DESPENSA Y LIMPIEZA ===
+            { id: 501, name: "Huevo rojo", price: 6, category: "Despensa", type: "standard", img: "img/hv.png", desc: "Pieza suelta." },
+            { id: 502, name: "Huevo blanco", price: 39, category: "Despensa", type: "weight", piecesPerKg: 15, img: "img/hvb.png", desc: "Venta por kilo." },
+            { id: 503, name: "Tortillas Mi Mesa", price: 17, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 504, name: "Tortillas Lupita", price: 17, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "Por kilo." },
+            { id: 505, name: "Tortilla harina Frank M", price: 40, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 506, name: "Tortilla de mano Yepetos", price: 28, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 507, name: "Tortillas de mano comal", price: 27, category: "Despensa", type: "standard", img: "", desc: "Frescas." },
+            { id: 508, name: "Aceite Capullo de soya 845ml", price: 46, category: "Despensa", type: "standard", img: "", desc: "Vegetal." },
+            { id: 509, name: "Aceite Oliva Carbonell 750ml", price: 217, category: "Despensa", type: "standard", img: "", desc: "Extra virgen." },
+            { id: 510, name: "Aceite Oliva Carbonell 250ml", price: 92, category: "Despensa", type: "standard", img: "", desc: "Extra virgen." },
+            { id: 511, name: "Aceite Canoil 946ml", price: 46, category: "Despensa", type: "standard", img: "", desc: "Soya." },
+            { id: 512, name: "Azúcar", price: 24, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "Estándar a granel." },
+            { id: 513, name: "Frijoles rikkos", price: 32, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 514, name: "Frijoles naturales", price: 22, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 515, name: "Frijoles Patos Puercos", price: 26, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 516, name: "Frijoles fritos Mireya", price: 25, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 517, name: "Frijol azufrado", price: 41, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 518, name: "Frijol texano", price: 27, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 519, name: "Pasta fetuccini", price: 31, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 520, name: "Pasta fusilli", price: 31, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 521, name: "Knorr pollo 2 cubos", price: 7, category: "Despensa", type: "standard", img: "", desc: "Sazonador." },
+            { id: 522, name: "Miel orgánica Pósima", price: 90, category: "Despensa", type: "standard", img: "", desc: "Frasco." },
+            { id: 523, name: "Enmielda saboralia", price: 55, category: "Despensa", type: "standard", img: "", desc: "Frasco." },
+            { id: 524, name: "Chocomilk 350g", price: 56, category: "Despensa", type: "standard", img: "", desc: "Polvo sabor chocolate." },
+            { id: 525, name: "Carnation Clavel 360ml", price: 25, category: "Despensa", type: "standard", img: "", desc: "Leche evaporada." },
+            { id: 526, name: "Mayonesa McCormick 105g", price: 22, category: "Despensa", type: "standard", img: "", desc: "Frasco chico." },
+            { id: 527, name: "Mayonesa McCormick 190g", price: 32, category: "Despensa", type: "standard", img: "", desc: "Frasco mediano." },
+            { id: 528, name: "Mayonesa McCormick 390g", price: 57, category: "Despensa", type: "standard", img: "", desc: "Frasco grande." },
+            { id: 529, name: "Salsa Lara Taquera", price: 20, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 530, name: "Salsa Lara 3 Chiles", price: 20, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 531, name: "Salsa Mireya", price: 23, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 532, name: "Salsa Rico", price: 27, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 533, name: "Salsa deli", price: 27, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 534, name: "Flor de Tabasco 500ml", price: 40, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 535, name: "Tajín bajo en sodio 142g", price: 47, category: "Despensa", type: "standard", img: "", desc: "Chilito en polvo." },
+            { id: 536, name: "Rajas costeñas 105g", price: 13, category: "Despensa", type: "standard", img: "", desc: "Lata pequeña." },
+            { id: 537, name: "Cola loca 3.5g", price: 27, category: "Despensa", type: "standard", img: "", desc: "Pegamento." },
+            { id: 538, name: "Palillos", price: 12, category: "Despensa", type: "standard", img: "", desc: "Cajita." },
+            { id: 539, name: "Hielo 1.25kg", price: 16, category: "Despensa", type: "standard", img: "", desc: "Bolsa chica." },
+            { id: 540, name: "Hielo 3kg", price: 27, category: "Despensa", type: "standard", img: "", desc: "Bolsa mediana." },
+            { id: 541, name: "Hielo 5kg", price: 30, category: "Despensa", type: "standard", img: "", desc: "Bolsa grande." },
+            { id: 542, name: "Whiskas salmón sobre", price: 13, category: "Despensa", type: "standard", img: "", desc: "Gatos." },
+            { id: 543, name: "Croqueta gatina", price: 43, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 544, name: "Croqueta de cachorro", price: 39, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 545, name: "Pedigree sobre", price: 14, category: "Despensa", type: "standard", img: "", desc: "Perros." },
+            { id: 546, name: "Windex 640ml", price: 56, category: "Despensa", type: "standard", img: "", desc: "Limpiavidrios." },
+            { id: 547, name: "Microdyn 15ml", price: 29, category: "Despensa", type: "standard", img: "", desc: "Desinfectante." },
+            { id: 548, name: "Destapacaños", price: 49, category: "Despensa", type: "standard", img: "", desc: "Líquido." },
+            { id: 549, name: "Suavizante Carisma 1L", price: 35, category: "Despensa", type: "standard", img: "", desc: "Para ropa." },
+            { id: 550, name: "Pinol 1.8L", price: 58, category: "Despensa", type: "standard", img: "", desc: "Limpiador multiusos." },
+            { id: 551, name: "Carisma detergente polvo", price: 145, category: "Despensa", type: "standard", img: "", desc: "Bolsa grande." },
+            { id: 552, name: "Pastilla de cloro Frodum", price: 20, category: "Despensa", type: "standard", img: "", desc: "Para baño." },
+            { id: 553, name: "Fibra metálica chica", price: 21, category: "Despensa", type: "standard", img: "", desc: "Esponja." },
+            { id: 554, name: "Lija de agua", price: 14, category: "Despensa", type: "standard", img: "", desc: "Hoja." },
+            { id: 555, name: "Bolsa de basura mediana", price: 8, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 556, name: "Bolsa de basura grande", price: 9, category: "Despensa", type: "standard", img: "", desc: "Paquete." }
+        ];
+
+
+        let cart = JSON.parse(localStorage.getItem('superexpress_final_v10')) || [];
+        
+        let activeProduct = null;
+        let activeSelection = { weight: 0, label: "" };
+        let buyMode = 'weight'; 
+        let pieceCount = 1;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setupZones();
+            setupCategories();
+            renderProducts(db_products);
+            updateCartUI();
+        });
+
+        function setupZones() {
+            const select = document.getElementById('c-colonia');
+            CONFIG.allowedZones.forEach(z => {
+                select.appendChild(new Option(z, z));
+            });
+        }
+
+        function setupCategories() {
+            const cats = ["Todos", "Frescos", "Lácteos", "Bebidas", "Snacks", "Despensa"];
+            const cont = document.getElementById('category-list');
+            cats.forEach(c => {
+                const b = document.createElement('button');
+                b.className = `cat-btn ${c === "Todos" ? 'active' : ''}`;
+                b.innerText = c;
+                b.onclick = () => {
+                    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+                    b.classList.add('active');
+                    renderProducts(c === "Todos" ? db_products : db_products.filter(p => p.category === c));
+                };
+                cont.appendChild(b);
+            });
+        }
+
+        function searchProducts() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            renderProducts(db_products.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)));
+        }
+
+        function renderProducts(products) {
+            const cont = document.getElementById('products-container');
+            cont.innerHTML = products.map(p => {
+                const priceTxt = p.type !== 'standard' ? `$${p.price.toFixed(2)}/kg` : `$${p.price.toFixed(2)}`;
+                return `
+                <div class="product-card" onclick="openProductModal(${p.id})">
+                    <div class="img-container"><img src="${p.img}" loading="lazy" class="product-img"></div>
+                    <div class="product-info-area">
+                        <span class="product-category-tag">${p.category}</span>
+                        <h3 class="product-title">${p.name}</h3>
+                        <div class="price-row"><span class="product-price">${priceTxt}</span></div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function openProductModal(id) {
+            activeProduct = db_products.find(p => p.id === id);
+            
+            document.getElementById('pm-img').src = activeProduct.img;
+            document.getElementById('pm-category').innerText = activeProduct.category;
+            document.getElementById('pm-title').innerText = activeProduct.name;
+            document.getElementById('pm-desc').innerText = activeProduct.desc;
+            
+            const priceEl = document.getElementById('pm-price');
+            const eqEl = document.getElementById('pm-equivalency');
+            
+            if(activeProduct.equivalency) {
+                eqEl.innerText = activeProduct.equivalency;
+                eqEl.style.display = 'inline-block';
+            } else {
+                eqEl.style.display = 'none';
+            }
+
+            priceEl.innerText = activeProduct.type === 'standard' ? `$${activeProduct.price.toFixed(2)}` : `$${activeProduct.price.toFixed(2)} / kg`;
+
+            const btnAdd = document.getElementById('pm-btn-add');
+            btnAdd.style.background = '';
+            document.getElementById('pm-btn-text').innerText = "Agregar al carrito";
+
+            buildModalControls();
+
+            document.getElementById('pm-overlay').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('pm-overlay').style.opacity = '1';
+                document.getElementById('product-modal').classList.add('show-desktop');
+                if(window.innerWidth < 768) document.getElementById('product-modal').style.bottom = '0';
+            }, 10);
+        }
+
+        function buildModalControls() {
+            const cont = document.getElementById('pm-dynamic-controls');
+            let html = '';
+            
+            activeSelection = { weight: 1, label: "" };
+
+            if(activeProduct.type === 'standard') {
+                activeSelection.weight = 1; 
+                html = `
+                <div class="pm-qty-standard">
+                    <button class="pm-qty-btn" onclick="updateModalQty(-1)">-</button>
+                    <div class="pm-qty-number" id="pm-qty-display">1</div>
+                    <button class="pm-qty-btn" onclick="updateModalQty(1)">+</button>
+                </div>`;
+            } 
+            else if (activeProduct.type === 'weight') {
+                html += `
+                <div class="pm-mode-toggle">
+                    <button class="pm-mode-btn active" id="btn-mode-weight" onclick="setBuyMode('weight')">⚖️ Por Peso</button>
+                    <button class="pm-mode-btn" id="btn-mode-piece" onclick="setBuyMode('piece')">🍎 Por Piezas</button>
+                </div>
+                
+                <div id="sec-mode-weight" class="pm-mode-section">
+                    <div class="pm-options-grid">
+                        <button class="pm-option-btn active" onclick="selectModalOption(this, 1, '1 Kilo')">1 Kilo</button>
+                        <button class="pm-option-btn" onclick="selectModalOption(this, 0.5, 'Medio Kilo (500g)')">Medio Kilo</button>
+                        <button class="pm-option-btn" onclick="selectModalOption(this, 0.25, 'Cuarto de Kilo (250g)')">Cuarto</button>
+                    </div>
+                </div>
+
+                <div id="sec-mode-piece" class="pm-mode-section" style="display:none; text-align:center;">
+                    <div class="pm-qty-standard">
+                        <button class="pm-qty-btn" onclick="updatePieceQty(-1)">-</button>
+                        <div class="pm-qty-number" id="pm-piece-display">1</div>
+                        <button class="pm-qty-btn" onclick="updatePieceQty(1)">+</button>
+                    </div>
+                    <span class="pm-estimate-text" id="pm-piece-weight-estimate">Peso est.: 0.00 kg</span>
+                </div>`;
+                
+                buyMode = 'weight';
+                activeSelection = { weight: 1, label: "1 Kilo" };
+                pieceCount = 1;
+            }
+            else if (activeProduct.type === 'fraction') {
+                html += `<div class="pm-options-grid">`;
+                activeProduct.options.forEach((opt, idx) => {
+                    html += `<button class="pm-option-btn ${idx===0?'active':''}" onclick="selectModalOption(this, ${opt.w}, '${opt.label}')">${opt.label.split('(')[0]}</button>`;
+                });
+                html += `</div>`;
+                activeSelection = { weight: activeProduct.options[0].w, label: activeProduct.options[0].label };
+            }
+            else if (activeProduct.type === 'deli') {
+                html += `
+                <div class="pm-options-grid">
+                    <button class="pm-option-btn" onclick="selectModalOption(this, 0.25, '250g')">250g</button>
+                    <button class="pm-option-btn active" onclick="selectModalOption(this, 0.5, '500g')">500g</button>
+                    <button class="pm-option-btn" onclick="selectModalOption(this, 1, '1 Kilo')">1 Kilo</button>
+                    <button class="pm-option-btn" onclick="toggleDeliCustom(this)">Otro</button>
+                </div>
+                <div class="pm-deli-custom" id="deli-custom-box">
+                    <input type="number" id="deli-gram-input" placeholder="Gramos (ej. 300)" onkeyup="updateCustomDeli()">
+                </div>`;
+                activeSelection = { weight: 0.5, label: "500g" };
+            }
+
+            cont.innerHTML = html;
+            updateModalPriceButton();
+        }
+
+        function setBuyMode(mode) {
+            buyMode = mode;
+            const btnW = document.getElementById('btn-mode-weight');
+            const btnP = document.getElementById('btn-mode-piece');
+            if(btnW) { btnW.classList.remove('active'); btnW.style.background = 'transparent'; btnW.style.boxShadow = 'none'; }
+            if(btnP) { btnP.classList.remove('active'); btnP.style.background = 'transparent'; btnP.style.boxShadow = 'none'; }
+            
+            document.getElementById('sec-mode-weight').style.display = 'none';
+            document.getElementById('sec-mode-piece').style.display = 'none';
+            
+            const activeBtn = document.getElementById('btn-mode-' + mode);
+            if(activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.style.background = 'var(--surface)';
+                activeBtn.style.boxShadow = 'var(--shadow-sm)';
+            }
+            document.getElementById('sec-mode-' + mode).style.display = 'block';
+
+            if(mode === 'weight') {
+                const firstOpt = document.querySelector('#sec-mode-weight .pm-option-btn');
+                if(firstOpt) selectModalOption(firstOpt, 1, '1 Kilo');
+            } else {
+                pieceCount = 1;
+                updatePieceQty(0); 
+            }
+        }
+
+        function updatePieceQty(change) {
+            pieceCount += change;
+            if(pieceCount < 1) pieceCount = 1;
+            document.getElementById('pm-piece-display').innerText = pieceCount;
+            
+            const ppk = activeProduct.piecesPerKg || 1;
+            let estWeight = pieceCount / ppk;
+            activeSelection = { weight: estWeight, label: `${pieceCount} Pieza(s)` };
+            
+            document.getElementById('pm-piece-weight-estimate').innerText = `Peso calculado: ${estWeight.toFixed(2)} kg`;
+            updateModalPriceButton();
+        }
+
+        function updateModalQty(change) {
+            activeSelection.weight += change;
+            if(activeSelection.weight < 1) activeSelection.weight = 1;
+            document.getElementById('pm-qty-display').innerText = activeSelection.weight;
+            updateModalPriceButton();
+        }
+
+        function selectModalOption(btn, weight, label) {
+            document.querySelectorAll('.pm-option-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.borderColor = 'var(--border)';
+                b.style.background = 'var(--surface)';
+                b.style.color = 'var(--text-light)';
+            });
+            btn.classList.add('active');
+            btn.style.borderColor = 'var(--primary)';
+            btn.style.background = '#EFF6FF';
+            btn.style.color = 'var(--primary)';
+            
+            const deliBox = document.getElementById('deli-custom-box');
+            if(deliBox) deliBox.style.display = 'none';
+            
+            activeSelection = { weight: weight, label: label };
+            updateModalPriceButton();
+        }
+
+        function toggleDeliCustom(btn) {
+            document.querySelectorAll('.pm-option-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.borderColor = 'var(--border)';
+                b.style.background = 'var(--surface)';
+                b.style.color = 'var(--text-light)';
+            });
+            btn.classList.add('active');
+            btn.style.borderColor = 'var(--primary)';
+            btn.style.background = '#EFF6FF';
+            btn.style.color = 'var(--primary)';
+            
+            document.getElementById('deli-custom-box').style.display = 'block';
+            document.getElementById('deli-gram-input').focus();
+            updateCustomDeli();
+        }
+
+        function updateCustomDeli() {
+            let val = parseFloat(document.getElementById('deli-gram-input').value);
+            if(isNaN(val) || val <= 0) val = 0;
+            activeSelection = { weight: val / 1000, label: `${val}g` }; 
+            updateModalPriceButton();
+        }
+
+        function updateModalPriceButton() {
+            const price = activeProduct.price * activeSelection.weight;
+            const btnPrice = document.getElementById('pm-btn-price');
+            btnPrice.innerText = `$${price.toFixed(2)}`;
+            btnPrice.style.display = 'inline-block';
+        }
+
+        function closeProductModal(e) {
+            if(e && e.target.id !== 'pm-overlay' && e.target.className !== 'pm-btn-close') return;
+            forceCloseModal();
+        }
+        
+        function forceCloseModal() {
+            const pmOverlay = document.getElementById('pm-overlay');
+            const pmModal = document.getElementById('product-modal');
+            pmOverlay.style.opacity = '0';
+            if(window.innerWidth >= 768) pmModal.classList.remove('show-desktop');
+            else pmModal.style.bottom = '-100%';
+            setTimeout(() => pmOverlay.style.display = 'none', 300);
+        }
+
+        function addFromModal() {
+            if(activeSelection.weight <= 0) return alert("Ingresa una cantidad válida.");
+
+            const cartItemId = `${activeProduct.id}_${activeSelection.label.replace(/\s+/g, '')}`;
+
+            const existing = cart.find(i => i.cartId === cartItemId);
+            if(existing) {
+                if(activeProduct.type === 'standard') existing.qty += activeSelection.weight;
+                else existing.qty += 1; 
+            } else {
+                cart.push({
+                    cartId: cartItemId,
+                    id: activeProduct.id,
+                    name: activeProduct.name,
+                    priceBase: activeProduct.price,
+                    qtyMultiplier: activeSelection.weight,
+                    label: activeSelection.label,
+                    type: activeProduct.type || 'standard',
+                    qty: activeProduct.type === 'standard' ? activeSelection.weight : 1
+                });
+            }
+            saveCart();
+            
+            const btn = document.getElementById('pm-btn-add');
+            btn.style.background = 'var(--success)';
+            document.getElementById('pm-btn-text').innerText = "✔ Agregado";
+            document.getElementById('pm-btn-price').style.display = 'none';
+            
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.style.transform = 'scale(1.5)';
+            setTimeout(() => cartBadge.style.transform = 'scale(1)', 300);
+
+            showToast("Producto agregado al carrito");
+            setTimeout(() => forceCloseModal(), 800);
+        }
+
+        function saveCart() {
+            localStorage.setItem('superexpress_final_v10', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const cont = document.getElementById('cart-items-container');
+            let subtotal = 0;
+
+            if(cart.length === 0) {
+                cont.innerHTML = `<p style="text-align:center; margin-top:50px; color:#94A3B8; font-weight:600;">🛒 Tu carrito está vacío.</p>`;
+            } else {
+                cont.innerHTML = cart.map(item => {
+                    const linePrice = item.priceBase * item.qtyMultiplier * item.qty;
+                    subtotal += linePrice;
+                    const descLabel = item.type === 'standard' ? 'Pieza' : item.label;
+                    
+                    return `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <p class="cart-item-title">${item.name}</p>
+                            <p class="cart-item-meta" style="font-size:13px; color:var(--primary); font-weight:600; margin-bottom:8px;">${descLabel}</p>
+                            <p class="cart-item-price">$${linePrice.toFixed(2)}</p>
+                        </div>
+                        <div class="cart-controls">
+                            <button class="qty-btn" onclick="updateCartLine('${item.cartId}', -1)">-</button>
+                            <input class="qty-input" value="${item.qty}" readonly>
+                            <button class="qty-btn" onclick="updateCartLine('${item.cartId}', 1)">+</button>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+
+          let dynamicDeliveryFee = 0;
+            if (subtotal > 0) {
+                if (subtotal >= 100) {
+                    dynamicDeliveryFee = 15;
+                } else if (subtotal >= 50) {
+                    dynamicDeliveryFee = 17;
+                } else {
+                    dynamicDeliveryFee = 20; // Para menos de 50 pesos
+                }
+            }
+            const finalTotal = subtotal + dynamicDeliveryFee;
+
+            document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+
+            document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+            const textEnvioUI = dynamicDeliveryFee === 0 && subtotal === 0 ? `$0.00` : `$${dynamicDeliveryFee.toFixed(2)}`;
+            document.getElementById('cart-delivery').innerHTML = textEnvioUI;
+            document.getElementById('cart-total-price').innerText = `$${finalTotal.toFixed(2)}`;
+        }
+
+        function updateCartLine(cartId, change) {
+            const item = cart.find(i => i.cartId === cartId);
+            if(item) {
+                item.qty += change;
+                if(item.qty <= 0) cart = cart.filter(i => i.cartId !== cartId);
+                saveCart();
+            }
+        }
+
+        function clearCart(confirmFirst = false) {
+            if(confirmFirst && !confirm("¿Vaciar carrito?")) return;
+            cart = [];
+            saveCart();
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div class="toast-icon">
+                    <svg width="14" height="14" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        const overlay = document.getElementById('overlay');
+        const cartModal = document.getElementById('cart-modal');
+        const checkoutModal = document.getElementById('checkout-modal');
+
+        function openCart() { 
+            overlay.style.display = 'block'; 
+            setTimeout(() => overlay.style.opacity = '1', 10);
+            cartModal.style.right = '0'; 
+        }
+        function closeModals() { 
+            overlay.style.opacity = '0'; 
+            cartModal.style.right = '-100%'; checkoutModal.style.right = '-100%'; 
+            setTimeout(() => overlay.style.display = 'none', 300);
+        }
+        function openCheckout() { 
+            if(cart.length === 0) return alert("Agrega productos primero."); 
+            cartModal.style.right = '-100%'; checkoutModal.style.right = '0'; 
+        }
+        function backToCart() { checkoutModal.style.right = '-100%'; cartModal.style.right = '0'; }
+
+        function checkZone() {
+            const z = document.getElementById('c-colonia').value;
+            const btn = document.getElementById('btn-send-wa');
+            const warn = document.getElementById('zone-warning');
+            if(!CONFIG.allowedZones.includes(z)) { warn.style.display = 'flex'; btn.disabled = true; }
+            else { warn.style.display = 'none'; btn.disabled = false; }
+        }
+
+        function updatePaymentInfo() {
+            const method = document.getElementById('c-payment').value;
+            const infoBox = document.getElementById('payment-info');
+            infoBox.style.display = 'block';
+            if (method === "Efectivo") infoBox.innerHTML = "Por favor ten tu pago a la mano. El repartidor lleva cambio limitado.";
+            else if (method === "Terminal") infoBox.innerHTML = "El repartidor llevará terminal de proximidad para un pago seguro";
+            else if (method === "Transferencia") infoBox.innerHTML = CONFIG.bankDetails;
+            else infoBox.style.display = 'none';
+        }
+
+        function sendOrder() {
+            const name = document.getElementById('c-name').value.trim();
+            const phone = document.getElementById('c-phone').value.trim();
+            const street = document.getElementById('c-street').value.trim();
+            const addr = document.getElementById('c-address').value.trim();
+            const col = document.getElementById('c-colonia').value;
+            const ref = document.getElementById('c-references').value.trim();
+            const pay = document.getElementById('c-payment').value;
+            const time = document.getElementById('c-time').value;
+            const notes = document.getElementById('c-notes').value.trim();
+
+            if(!name || !phone || !street || !addr || !col || !ref || !pay || !time) return alert("Por favor completa todos tus datos de envío, hora y pago obligatorios.");
+            if(!/^\d{10}$/.test(phone)) return alert("El teléfono debe tener 10 dígitos numéricos.");
+            if(!CONFIG.allowedZones.includes(col)) return alert("Selecciona una colonia válida.");
+
+            if(!confirm("¿Confirmas que todos tus datos son correctos?")) return;
+
+            let subtotal = 0;
+            let msg = `🛍️ *NUEVO PEDIDO - SUPER EXPRESS*\n\n`;
+            msg += `👤 *Cliente:* ${name}\n📞 *Tel:* ${phone}\n`;
+            msg += `🛣️ *Dirección:* ${street} #${addr}\n🏘️ *Colonia:* ${col}\n🚩 *Ref:* ${ref}\n`;
+            msg += `⏰ *Hora de entrega:* ${time}\n\n`;
+            msg += `📦 *CARRITO:*\n`;
+
+            cart.forEach(i => {
+                const lineTotal = i.priceBase * i.qtyMultiplier * i.qty;
+                subtotal += lineTotal;
+                const desc = i.type === 'standard' ? `${i.qty}x ${i.name}` : `${i.qty}x [${i.label}] ${i.name}`;
+                msg += `▪️ ${desc} = $${lineTotal.toFixed(2)}\n`;
+            });
+
+           let dynamicDeliveryFee = 0;
+            if (subtotal >= 100) {
+                dynamicDeliveryFee = 15;
+            } else if (subtotal >= 50) {
+                dynamicDeliveryFee = 17;
+            } else {
+                dynamicDeliveryFee = 20;
+            }
+
+            const total = subtotal + dynamicDeliveryFee;
+
+            msg += `\n💰 Subtotal: $${subtotal.toFixed(2)}\n`;
+            msg += `🛵 Envío: $${dynamicDeliveryFee.toFixed(2)}\n`;
+            msg += `💳 *TOTAL A PAGAR: $${total.toFixed(2)}*\n\n`;
+            msg += `💵 *Pago:* ${pay}\n`;
+            if(notes) msg += `📝 *Notas:* ${notes}\n`;
+
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+
+            setTimeout(() => {
+                clearCart(false);
+                document.getElementById('c-name').value = '';
+                document.getElementById('c-phone').value = '';
+                document.getElementById('c-street').value = '';
+                document.getElementById('c-address').value = '';
+                document.getElementById('c-colonia').value = '';
+                document.getElementById('c-references').value = '';
+                document.getElementById('c-time').value = '';
+                document.getElementById('c-payment').value = '';
+                document.getElementById('c-notes').value = '';
+                closeModals();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
