@@ -428,10 +428,9 @@
             allowedZones: ["Valle Verde", "Punta Norte", "Albaterra" , "Real Santa Barbara"]
         };
  // GESTOR:INICIO
-           const db_products = [
-
+const db_products = [
 // ================= FRUTA/FRESCOS =================
-{ id: 101, name: "Jitomate", price: 61, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/jitomate.png", desc: "Jitomate fresco." },
+{ id: 101, name: "Jitomate", price: 40, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/jitomate.png", desc: "Jitomate fresco." },
 { id: 102, name: "Jitomate cherry", price: 76, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
 { id: 103, name: "Cebolla", price: 22, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla.png", desc: "Cebolla blanca." },
 { id: 104, name: "Cebolla morada", price: 23, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla morada.png", desc: "Ideal para cortes finos." },
@@ -673,7 +672,7 @@
 { id: 554, name: "Lija de agua", price: 14, category: "Despensa", type: "standard", img: "", desc: "Hoja." },
 { id: 555, name: "Bolsa de basura mediana", price: 8, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
 { id: 556, name: "Bolsa de basura grande", price: 9, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
-]
+];
 // GESTOR:FIN
 
         let cart = JSON.parse(localStorage.getItem('superexpress_final_v10')) || [];
