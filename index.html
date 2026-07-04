@@ -2,8 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Super Express | Tu súper premium a domicilio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Express | Tu súper a domicilio en Colima</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <meta name="description" content="Frescos, lácteos, bebidas y más. Entregas de 8:30 AM a 10 PM en Valle Verde, Punta Norte, Albaterra y Real Santa Bárbara. Colima.">
+    <meta property="og:title" content="Super Express — Tu súper a domicilio en Colima">
+    <meta property="og:description" content="Frescos, lácteos, bebidas y más. Entregas de 8:30 AM a 10 PM. Pide en la mañana y recibe hoy mismo.">
+    <meta property="og:image" content="img/og-image.png">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* === DISEÑO PREMIUM UI/UX (INTACTO) === */
@@ -183,7 +189,7 @@
         .form-row { display: flex; gap: 12px; }
         .form-row .form-group { flex: 1; }
         
-        .warning-zone { background: #FEF2F2; color: #B91C1C; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid #FECACA; font-size: 13px; margin-top: 8px; display: none; font-weight: 600; display: flex; gap: 8px; align-items: flex-start;}
+        .warning-zone { background: #FEF2F2; color: #B91C1C; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid #FECACA; font-size: 13px; margin-top: 8px; font-weight: 600; gap: 8px; align-items: flex-start; display: none;}
         .payment-info { background: #EFF6FF; padding: 16px; border-radius: var(--radius-md); font-size: 14px; margin-top: 8px; display: none; border: 1px solid #BFDBFE; color: #1E3A8A; line-height: 1.5;}
 
         .cart-footer { padding: 24px 24px calc(24px + var(--safe-area-bottom)); background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 15px rgba(0,0,0,0.02);}
@@ -219,20 +225,44 @@
     </header>
 
     <div class="hero">
-        <h1>Tu súper completo,<br>directo a tu puerta.</h1>
-        <p>Precios justos. Haz tu pedido en la mañana, recíbelo por la tarde sin salir de casa.</p>
+        <h1>El súper de tu colonia,<br>ahora a domicilio.</h1>
+        <p>Frescos, lácteos y más. Pide en la mañana y recibe hoy mismo sin salir de casa.</p>
         <div class="schedule-badge">
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Entregas Hoy: | 2:00 PM - 3:00 PM | 3:30 PM - 4:30 PM | 5:00 PM - 6:00 PM | 6:30 PM - 7:30 PM | 8:00 PM - 9:45 PM |
+            9 turnos diarios: 8:30 · 10:00 · 11:30 · 13:00 · 14:30 · 16:00 · 17:30 · 19:00 · 20:30 hrs
         </div>
     </div>
 
     <div class="service-notice">
-        <div class="service-notice-icon">✨</div>
-        <h3>Calidad y Confianza</h3>
-        <p>Seleccionamos cuidadosamente tus productos directamente en tienda física, cuidando la calidad de cada artículo, y te los llevamos hasta la puerta de tu hogar con rapidez y confianza.</p>
+        <div class="service-notice-icon">🛒</div>
+        <h3>Calidad, confianza y sin complicaciones</h3>
+        <p>Haz tu pedido aquí y nosotros seleccionamos cuidadosamente cada artículo directamente en tienda, cuidando la calidad de cada producto. Te lo llevamos hasta la puerta de tu hogar con rapidez y confianza, el mismo día. <strong>📱 <a href="https://wa.me/523123092338" style="color:var(--primary);">312-309-2338</a></strong></p>
     </div>
 
+    <div style="padding: 0 20px 24px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size:18px; font-weight:800; color:#0F172A; margin-bottom:14px;">🕗 Horarios de entrega</h2>
+        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:10px;">
+            <div style="background:#EFF6FF; border-radius:12px; padding:10px 12px; text-align:center;">
+                <div style="font-size:11px; color:#3B82F6; font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">Mañana</div>
+                <div style="font-size:13px; font-weight:700; color:#1E3A8A;">8:30 – 9:30</div>
+                <div style="font-size:13px; font-weight:700; color:#1E3A8A;">10:00 – 11:00</div>
+                <div style="font-size:13px; font-weight:700; color:#1E3A8A;">11:30 – 12:30</div>
+            </div>
+            <div style="background:#F0FDF4; border-radius:12px; padding:10px 12px; text-align:center;">
+                <div style="font-size:11px; color:#16A34A; font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">Tarde</div>
+                <div style="font-size:13px; font-weight:700; color:#14532D;">1:00 – 2:00</div>
+                <div style="font-size:13px; font-weight:700; color:#14532D;">2:30 – 3:30</div>
+                <div style="font-size:13px; font-weight:700; color:#14532D;">4:00 – 5:00</div>
+            </div>
+            <div style="background:#F5F3FF; border-radius:12px; padding:10px 12px; text-align:center;">
+                <div style="font-size:11px; color:#7C3AED; font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">Noche</div>
+                <div style="font-size:13px; font-weight:700; color:#3B0764;">5:30 – 6:30</div>
+                <div style="font-size:13px; font-weight:700; color:#3B0764;">7:00 – 8:00</div>
+                <div style="font-size:13px; font-weight:700; color:#3B0764;">8:30 – 9:30</div>
+            </div>
+        </div>
+        <p style="font-size:12px; color:#94A3B8; margin-top:10px; text-align:center;">Pide con al menos 1 hora de anticipación · Costo de envío desde $15</p>
+    </div>
     <main class="container">
         <h2 class="section-title">Explorar Catálogo</h2>
         <div class="categories" id="category-list"></div>
@@ -241,9 +271,16 @@
 
     <footer>
         <p><strong>Super Express</strong> &copy; 2026</p>
-        <p style="margin-top: 8px;">📍 Servicio exclusivo en zonas seleccionadas.</p>
+        <p style="margin-top: 8px;">📍 Colima · Servicio a domicilio</p>
+        <p style="margin-top: 6px;">📱 <a href="https://wa.me/523123092338?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20un%20pedido" style="color: #25D366; font-weight:700; text-decoration:none;">312-309-2338 (WhatsApp)</a></p>
+        <p style="margin-top: 6px; font-size:13px;">🕗 Entregas: 8:30 AM – 10:00 PM</p>
+        <p style="margin-top: 6px; font-size:13px;">🏘️ Albaterra · Valle Verde · Punta Norte · Real Santa Bárbara</p>
     </footer>
 
+    
+    <a href="https://wa.me/523123092338?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20un%20pedido" target="_blank"
+       style="position:fixed; bottom:100px; right:20px; z-index:999; background:#25D366; color:white; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(37,211,102,0.4); text-decoration:none; font-size:26px;"
+       title="¿Dudas? Escríbenos por WhatsApp">💬</a>
     <div id="toast-container" class="toast-container"></div>
 
     <div class="modal-overlay" id="pm-overlay" onclick="closeProductModal(event)"></div>
@@ -283,6 +320,7 @@
         </div>
         <div class="modal-body cart-items" id="cart-items-container"></div>
         <div class="cart-footer">
+            <div id="cart-upsell-msg" style="display:none; background:#FFF7ED; border:1px solid #FED7AA; color:#C2410C; padding:10px 14px; border-radius:12px; font-size:13px; margin-bottom:12px; text-align:center;"></div>
             <div class="summary-row">
                 <span>Subtotal</span>
                 <span id="cart-subtotal">$0.00</span>
@@ -295,14 +333,14 @@
                 <span>Total</span>
                 <span id="cart-total-price">$0.00</span>
             </div>
-            <button class="btn-block btn-checkout" onclick="openCheckout()">Continuar al Checkout</button>
+            <button class="btn-block btn-checkout" onclick="openCheckout()">Continuar con mi pedido →</button>
             <button class="btn-block btn-clear" onclick="clearCart(true)">Vaciar carrito</button>
         </div>
     </div>
 
     <div class="side-modal" id="checkout-modal">
         <div class="modal-header">
-            <h3>Checkout</h3>
+            <h3>Datos de entrega</h3>
             <button class="close-btn" onclick="closeModals()">✕</button>
         </div>
         <div class="modal-body checkout-form">
@@ -331,7 +369,7 @@
                 <select id="c-colonia" onchange="checkZone()" required>
                     <option value="">Selecciona tu zona...</option>
                 </select>
-                <div class="warning-zone" id="zone-warning">
+                <div class="warning-zone" id="zone-warning" style="display:none;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     <span>Lo sentimos, actualmente solo entregamos en las zonas listadas.</span>
                 </div>
@@ -354,12 +392,19 @@
                 <label>Hora de entrega deseada *</label>
                 <select id="c-time" required>
                     <option value="">Selecciona un horario...</option>
-                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                    <option value="3:30 PM - 4:30 PM">3:30 PM - 4:30 PM</option>
-                    <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
-                    <option value="6:30 PM - 7:30 PM">6:30 PM - 7:30 PM</option>
-                    <option value="8:00 PM - 9:45 PM">8:00 PM - 9:45 PM</option>
+                    <option value="8:30 AM - 9:30 AM">🌅 8:30 AM – 9:30 AM</option>
+                    <option value="10:00 AM - 11:00 AM">☀️ 10:00 AM – 11:00 AM</option>
+                    <option value="11:30 AM - 12:30 PM">☀️ 11:30 AM – 12:30 PM</option>
+                    <option value="1:00 PM - 2:00 PM">🕐 1:00 PM – 2:00 PM</option>
+                    <option value="2:30 PM - 3:30 PM">🕑 2:30 PM – 3:30 PM</option>
+                    <option value="4:00 PM - 5:00 PM">🕓 4:00 PM – 5:00 PM</option>
+                    <option value="5:30 PM - 6:30 PM">🌆 5:30 PM – 6:30 PM</option>
+                    <option value="7:00 PM - 8:00 PM">🌙 7:00 PM – 8:00 PM</option>
+                    <option value="8:30 PM - 9:30 PM">🌙 8:30 PM – 9:30 PM</option>
                 </select>
+            </div>
+            <div style="background:#FFF7ED; border:1px solid #FED7AA; color:#92400E; padding:12px 16px; border-radius:12px; font-size:13px; margin-bottom:16px; line-height:1.5;">
+                ⚠️ Los precios de <strong>Frescos y Cremería</strong> son de referencia y pueden variar ±$2–5 por cambios de mercado. Te avisamos si hay diferencia antes de confirmar.
             </div>
             <div class="form-group">
                 <label>Notas para el pedido (Opcional)</label>
@@ -383,217 +428,250 @@
             allowedZones: ["Valle Verde", "Punta Norte", "Albaterra" , "Real Santa Barbara"]
         };
 
-             const db_products = [
+        const db_products = [
    // ================= FRUTA/FRESCOS =================
+            { id: 101, name: "Jitomate", price: 61, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/jitomate.png", desc: "Jitomate fresco." },
+{ id: 161, name: "Limón", price: 40, category: "Frescos", type: "weight", piecesPerKg: 20, img: "img/limon.png", desc: "Limon fresco." },
+
+            { id: 102, name: "Jitomate cherry", price: 76, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
+            { id: 103, name: "Cebolla", price: 22, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla.png", desc: "Cebolla blanca." },
+            { id: 104, name: "Cebolla morada", price: 23, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/cebolla morada.png", desc: "Ideal para cortes finos." },
+            { id: 105, name: "Papa", price: 36, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/papa.png", desc: "Papa blanca." },
+            { id: 106, name: "Tomate verde", price: 35, category: "Frescos", type: "weight", piecesPerKg: 15, img: "img/tomate verde.png", desc: "Fresco de hoja." },
+            { id: 107, name: "Aguacate", price: 64, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/aguacate.png", desc: "Aguacate Hass." },
+            { id: 108, name: "Pepino", price: 25, category: "Frescos", type: "weight", piecesPerKg: 3, img: "img/pepino.png", desc: "Crujiente." },
+            { id: 109, name: "Zanahoria", price: 32, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/zanahoria.png", desc: "Fresca y sin rabo." },
+            { id: 110, name: "Brócoli Corona", price: 65, category: "Frescos", type: "weight", piecesPerKg: 2, img: "img/brocoli corona.png", desc: "Corona Mister Luck." },
+            { id: 111, name: "Champiñón entero", price: 129, category: "Frescos", type: "weight", piecesPerKg: 50, img: "img/champiñones enteros.png", desc: "Fresco a granel." },
+            { id: 112, name: "Col morada", price: 33, category: "Frescos", type: "weight", piecesPerKg: 1, img: "img/col morada.png", desc: "A granel." },
+            { id: 113, name: "Calabaza", price: 30, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/calabaza.png", desc: "Calabacita tierna." },
+            { id: 114, name: "Rábano", price: 50, category: "Frescos", type: "weight", piecesPerKg: 30, img: "img/rabano.png", desc: "A granel." },
+            { id: 115, name: "Chile serrano", price: 79, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/chile serrano.png", desc: "Picante y fresco." },
+            { id: 116, name: "Chile habanero", price: 175, category: "Frescos", type: "weight", piecesPerKg: 60, img: "img/chile habanero.png", desc: "Muy picante." },
+            { id: 117, name: "Chile pasilla verde", price: 86, category: "Frescos", type: "weight", piecesPerKg: 20, img: "img/chile pasilla verde.png", desc: "A granel." },
+            { id: 118, name: "Espinaca a granel", price: 149, category: "Frescos", type: "weight", piecesPerKg: 10, img: "img/espinaca a granel.png", desc: "Fresca bolsas ya hechas." },
+            { id: 119, name: "Chayote", price: 28.50, category: "Frescos", type: "weight", piecesPerKg: 3, img: "img/chayote.png", desc: "Sin espinas." },
+            { id: 120, name: "Ejote", price: 86, category: "Frescos", type: "weight", piecesPerKg: 100, img: "img/ejote.png", desc: "A granel." },
+            { id: 121, name: "Manzana gala", price: 69, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/manzana gala.png", desc: "Dulce y firme." },
+            { id: 122, name: "Manzana granny", price: 64, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/manzana granny.png", desc: "Verde acidita." },
+            { id: 123, name: "Plátano", price: 25, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/platano.png", desc: "Muy fresco." },
+            { id: 124, name: "Plátano manzano", price: 42, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/platano manzano.png", desc: "Pequeño y dulce." },
+            { id: 125, name: "Pera", price: 61, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/pera.png", desc: "Jugosa." },
+            { id: 126, name: "Kiwi", price: 129, category: "Frescos", type: "weight", piecesPerKg: 10, img: "img/kiwi.png", desc: "Importado." },
+            { id: 127, name: "Mango indio", price: 52, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/mango indio.png", desc: "Dulce de temporada." },
+            { id: 128, name: "Mango ataulfo", price: 52, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/mango ataulfo.png", desc: "Delicioso." },
+            { id: 129, name: "Mandarina", price: 59, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/Mandarina.png", desc: "Jugosa e importada." },
+            { id: 130, name: "Naranja dulce", price: 28, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/Naranja dulce.png", desc: "Para jugo." },
+            { id: 131, name: "Naranja sin semilla", price: 47, category: "Frescos", type: "weight", piecesPerKg: 4.5, img: "img/Naranja sin semilla.png", desc: "Importada." },
+            
+            // Frutas Gigantes (Fracciones)
+            { id: 132, name: "Piña", price: 27.50, category: "Frescos", type: "fraction", img: "img/piña.png", desc: "Miel.", options: [ {label: "1 Pieza entera", w: 1.5}, {label: "Media pieza", w: 0.75} ] },
+            { id: 133, name: "Melón", price: 33, category: "Frescos", type: "fraction", img: "img/melon.png", desc: "Aromático.", options: [ {label: "1 Pieza entera", w: 1.8}, {label: "Media pieza", w: 0.9} ] },
+            { id: 134, name: "Sandía", price: 20, category: "Frescos", type: "fraction", img: "img/sandia.png", desc: "Rayada.", options: [ {label: "1 Pieza entera", w: 5}, {label: "Media pieza", w: 2.5}, {label: "Cuarto de pieza", w: 1.25} ] },
+            { id: 135, name: "Papaya", price: 24, category: "Frescos", type: "fraction", img: "img/papaya.png", desc: "Maradol.", options: [ {label: "1 Pieza entera", w: 1.8}, {label: "Media pieza", w: 0.9} ] },
+            { id: 137, name: "Lechuga romana", price: 30, category: "Frescos", type: "fraction", img: "img/lechuga romana.png", desc: "Fresca.", options: [{label: "1 Pieza", w: 1}, {label: "Media pieza", w: 0.5}] },
+            
+            // Frescos por piezas (Standard)
+            { id: 138, name: "Cilantro", price: 14, category: "Frescos", type: "standard", img: "img/1.png", desc: "Manojo." },
+            { id: 139, name: "Perejil", price: 13, category: "Frescos", type: "standard", img: "img/2.png", desc: "Manojo." },
+            { id: 140, name: "Hierbabuena", price: 14, category: "Frescos", type: "standard", img: "img/3.png", desc: "Manojo." },
+            { id: 141, name: "Elote amarillo 3 piezas", price: 61, category: "Frescos", type: "standard", img: "img/4.png", desc: "Paquete." },
+            { id: 142, name: "Fresa", price: 66, category: "Frescos", type: "standard", img: "img/5.png", desc: "Cajita." },
+            { id: 143, name: "Frambuesa fresca", price: 46, category: "Frescos", type: "standard", img: "img/6.png", desc: "Cajita." },
+            { id: 144, name: "Arándano fresco 170 g", price: 46, category: "Frescos", type: "standard", img: "img/7.png", desc: "Cajita." },
+            { id: 145, name: "Elote desgranado", price: 24, category: "Frescos", type: "standard", img: "img/8.png", desc: "Bolsa." },
+            { id: 146, name: "Chícharos desvainados", price: 250, category: "Frescos", type: "fraction", img: "", desc: "Aprox 100gr", options: [ {label: "1 Bolsita (100g)", w: 0.1}, {label: "Cuarto (250g)", w: 0.25}, {label: "Medio Kilo (500g)", w: 0.5} ] },
+
+            // ================= LÁCTEOS Y CREMERIA =================
+            { id: 201, name: "Leche Lala 100 tapa dorada 1L", price: 46, category: "Lácteos", type: "standard", img: "img/10.png", desc: "Sin lactosa." },
+            { id: 202, name: "Leche Lala 100 azul 1L", price: 46, category: "Lácteos", type: "standard", img: "img/11.png", desc: "Proteína." },
+            { id: 203, name: "Leche Lala deslactosada 2% 1L", price: 32, category: "Lácteos", type: "standard", img: "img/12.png", desc: "Baja en grasa." },
+            { id: 204, name: "Leche Lala deslactosada 1.8L", price: 56, category: "Lácteos", type: "standard", img: "img/13.png", desc: "Familiar." },
+            { id: 205, name: "Leche Lala entera 350ml", price: 16, category: "Lácteos", type: "standard", img: "img/14.png", desc: "Chica." },
+{ id: 215, name: "Leche Lala entera 1L", price: 35, category: "Lácteos", type: "standard", img: "img/30.png", desc: "Chica." },
+            { id: 206, name: "Leche Santa Clara deslactosada 1L", price: 35, category: "Lácteos", type: "standard", img: "img/15.png", desc: "Fácil digestión." },
+            { id: 207, name: "Santa Clara entera 1L", price: 35, category: "Lácteos", type: "standard", img: "img/16.png", desc: "Clásica." },
+            { id: 208, name: "Santa Clara light 1L", price: 35, category: "Lácteos", type: "standard", img: "img/17.png", desc: "Baja en grasa." },
+            { id: 209, name: "Santa Clara desl light 1L", price: 35, category: "Lácteos", type: "standard", img: "img/18.png", desc: "Doble beneficio." },
+            { id: 210, name: "Leche Sello Rojo 1L", price: 35, category: "Lácteos", type: "standard", img: "img/19.png", desc: "Entera." },
+            { id: 211, name: "Leche Monarca entera 1.8L", price: 50, category: "Lácteos", type: "standard", img: "img/20.png", desc: "Familiar." },
+            { id: 212, name: "Yogurt Chobani mango 190 g", price: 39, category: "Lácteos", type: "standard", img: "img/21.png", desc: "Griego." },
+            { id: 213, name: "Yogurt Chobani Flip Peanut 128 g", price: 36, category: "Lácteos", type: "standard", img: "img/22.png", desc: "Griego con topping." },
+            { id: 214, name: "Yogurt Unicornio 1L", price: 66, category: "Lácteos", type: "standard", img: "img/23.png", desc: "Para niños." },
+            { id: 216, name: "Yakult 3/80ml", price: 25, category: "Lácteos", type: "standard", img: "img/24.png", desc: "Probióticos." },
+            { id: 217, name: "Crema ácida Lala 426 ml", price: 48, category: "Lácteos", type: "standard", img: "img/25.png", desc: "Envase grande." },
+            { id: 218, name: "Crema ácida Lala 200 ml", price: 27, category: "Lácteos", type: "standard", img: "img/31.5.png", desc: "Envase chico." },
+            { id: 220, name: "Media crema Nestlé 225 g", price: 25, category: "Lácteos", type: "standard", img: "img/31.1.png", desc: "Lata." },
+            { id: 221, name: "Philadelphia 180 g", price: 47, category: "Lácteos", type: "standard", img: "img/35.png", desc: "Queso crema." },
+            { id: 222, name: "Mantequilla Lala 90gr", price: 28, category: "Lácteos", type: "standard", img: "img/34.png", desc: "Barra sin sal." },
+            { id: 223, name: "Queso amarillo FUD 130gr", price: 48, category: "Lácteos", type: "standard", img: "img/32.png", desc: "Rebanadas." },
+            { id: 224, name: "Queso panela", price: 74, category: "Lácteos", type: "fraction", img: "img/Panela.png", desc: "Entera.", options: [{label: "1 Pieza", w: 1}, {label: "Media pieza", w: 0.5}] },
+            { id: 225, name: "Queso fresco chico", price: 29, category: "Lácteos", type: "standard", img: "img/qfc.png", desc: "De rancho." },
+            { id: 226, name: "Requesón", price: 33, category: "Lácteos", type: "standard", img: "img/33.png", desc: "Tarrina." },
+            { id: 227, name: "Queso asadero de bola", price: 160, category: "Lácteos", type: "deli", img: "img/asab.png", desc: "Por kilos/gramos." },
+            { id: 228, name: "Queso asadero a granel", price: 150, category: "Lácteos", type: "deli", img: "", desc: "Por kilos/gramos." },
+            { id: 229, name: "Queso semiseco", price: 190, category: "Lácteos", type: "deli", img: "img/ss.png", desc: "Por kilos/gramos." },
+            { id: 230, name: "Queso mozzarella granulado", price: 140, category: "Lácteos", type: "deli", img: "img/gran.png", desc: "Para fundir." },
+            { id: 231, name: "Crema natural", price: 70, category: "Lácteos", type: "deli", img: "img/crema.png", desc: "A granel por litros/ml." },
+            { id: 232, name: "Longaniza", price: 99, category: "Fiambre", type: "deli", img: "img/lon.png", desc: "A granel." },
+            { id: 233, name: "Jamón de pierna a granel", price: 129, category: "Fiambre", type: "deli", img: "", desc: " similar." },
+            { id: 234, name: "Jamón real pavo", price: 83, category: "Fiambre", type: "standard", img: "img/41.png", desc: "San rafael jamon" },
+            { id: 235, name: "Jamón de pavo Corona 250 g", price: 69, category: "Fiambre", type: "standard", img: "img/42.png", desc: "Empacado." },
+            { id: 236, name: "Jamón de pavo Virginia", price: 99, category: "Fiambre", type: "standard", img: "img/43.png", desc: "Paquete." },
+            { id: 237, name: "Chuleta El Mexicano", price: 67, category: "Fiambre", type: "standard", img: "img/44.png", desc: "Paquete." },
+
+            // === BEBIDAS ===
+            { id: 301, name: "Coca-Cola 2.5L", price: 45, category: "Bebidas", type: "standard", img: "img/C2.5.PNG", desc: "Familiar." },
+            { id: 302, name: "Coca-Cola 2L", price: 42, category: "Bebidas", type: "standard", img: "img/C2.png", desc: "Original." },
+            { id: 303, name: "Coca-Cola 1L", price: 28, category: "Bebidas", type: "standard", img: "img/C1.png", desc: "Mediana." },
+            { id: 304, name: "Coca-Cola 600ml", price: 23, category: "Bebidas", type: "standard", img: "img/C6.png", desc: "Personal." },
+            { id: 305, name: "Coca-Cola 450ml", price: 19, category: "Bebidas", type: "standard", img: "img/C45.png", desc: "Pequeña." },
+            { id: 306, name: "Coca-Cola 300ml", price: 14, category: "Bebidas", type: "standard", img: "img/C3.png", desc: "Mini." },
+            { id: 307, name: "Coca-Cola sin azúcar 2L", price: 38, category: "Bebidas", type: "standard", img: "img/CS2.png", desc: "Sin calorías." },
+            { id: 308, name: "Coca-Cola light 1L", price: 26, category: "Bebidas", type: "standard", img: "img/Cl1.png", desc: "Light." },
+            { id: 309, name: "Coca-Cola 355ml sin azúcar", price: 22, category: "Bebidas", type: "standard", img: "img/CS35.png", desc: "Lata." },
+            { id: 310, name: "Sprite 2L", price: 32, category: "Bebidas", type: "standard", img: "img/sprite.png", desc: "Lima limón." },
+            { id: 311, name: "Sprite 1.75L", price: 28, category: "Bebidas", type: "standard", img: "img/1.75.png", desc: "Mediano." },
+            { id: 312, name: "Sprite 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/s6.png", desc: "Personal." },
+            { id: 313, name: "Sprite 300ml", price: 12, category: "Bebidas", type: "standard", img: "img/s3.png", desc: "Mini." },
+            { id: 314, name: "Sprite sin azúcar 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/ss6.png", desc: "Zero." },
+            { id: 315, name: "Squirt 2L", price: 40, category: "Bebidas", type: "standard", img: "img/sq2l.png", desc: "Toronja." },
+            { id: 316, name: "Squirt sin azúcar 2L", price: 39, category: "Bebidas", type: "standard", img: "img/sqs2.png", desc: "Toronja light." },
+            { id: 317, name: "Squirt 600ml", price: 19, category: "Bebidas", type: "standard", img: "img/sq6.png", desc: "Personal." },
+            { id: 318, name: "Sidral 1L", price: 24, category: "Bebidas", type: "standard", img: "img/sd1.png", desc: "Manzana." },
+            { id: 319, name: "Mundet 2L", price: 32, category: "Bebidas", type: "standard", img: "img/m2l.png", desc: "Manzana rojo." },
+            { id: 320, name: "Manzanita Sol 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/ma6.png", desc: "Manzana." },
+            { id: 321, name: "Fanta naranja 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/f6.png", desc: "Naranja." },
+            { id: 322, name: "Fresca 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/fr6.png", desc: "Toronja rosa." },
+            { id: 323, name: "Peñafiel mineral 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/pm6.png", desc: "Agua mineral." },
+            { id: 324, name: "Peñafiel naranjada 2L", price: 36, category: "Bebidas", type: "standard", img: "img/np2.png", desc: "Refresco." },
+            { id: 325, name: "Peñafiel Twist limón 600ml", price: 20, category: "Bebidas", type: "standard", img: "img/pwl.png", desc: "Mineral con limón." },
+            { id: 326, name: "Naranjada SR 1L", price: 31, category: "Bebidas", type: "standard", img: "img/nsr.png", desc: "Jugo." },
+            { id: 327, name: "Topo Chico 1.5L", price: 41, category: "Bebidas", type: "standard", img: "img/t1.5.png", desc: "Agua mineral." },
+            { id: 328, name: "Topo Chico 600ml", price: 23, category: "Bebidas", type: "standard", img: "img/t6.png", desc: "Mineral botella." },
+            { id: 329, name: "Topo Chico limón 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/tl.png", desc: "Sabor limón." },
+            { id: 330, name: "Topo Chico toronja", price: 22, category: "Bebidas", type: "standard", img: "img/tt.png", desc: "Sabor toronja." },
+            { id: 331, name: "Agua Colimán 1L", price: 27, category: "Bebidas", type: "standard", img: "img/rc.png", desc: "Especificar sabor, preguntar disponibilidad." },
+            { id: 332, name: "Agua Ciel 5L", price: 36, category: "Bebidas", type: "standard", img: "img/c5.png", desc: "Garrafón chico." },
+            { id: 333, name: "Agua Frescolima 1L", price: 29, category: "Bebidas", type: "standard", img: "img/fres.png", desc: "Especificar sabor y preguntar disponibilidad." },
+            { id: 334, name: "Skarch 750 ml", price: 14, category: "Bebidas", type: "standard", img: "img/s75.png", desc: "Agua natural." },
+            { id: 335, name: "Agua de coco 1L", price: 56, category: "Bebidas", type: "standard", img: "", desc: "Natural." },
+            { id: 336, name: "Fuze Tea durazno 1L", price: 31, category: "Bebidas", type: "standard", img: "img/FZ1.PNG", desc: "Té frío." },
+            { id: 337, name: "Fuze Tea durazno 600ml", price: 24, category: "Bebidas", type: "standard", img: "img/FZ6.PNG", desc: "Té frío personal." },
+            { id: 338, name: "Fuze Tea limón 600ml", price: 24, category: "Bebidas", type: "standard", img: "img/FZL.PNG", desc: "Té frío personal." },
+            { id: 339, name: "Jugo Ades manzana 945ml", price: 34, category: "Bebidas", type: "standard", img: "img/AD.PNG", desc: "Soya y jugo." },
+            { id: 340, name: "Electrolit uva 625ml", price: 29, category: "Bebidas", type: "standard", img: "img/E6.PNG", desc: "Suero." },
+            { id: 341, name: "Red Bull 250ml", price: 40, category: "Bebidas", type: "standard", img: "img/RED.PNG", desc: "Energizante." },
+            { id: 342, name: "Monster 473ml", price: 46, category: "Bebidas", type: "standard", img: "img/MONSTER.PNG", desc: "Energizante verde." },
+            { id: 343, name: "Sangría Casera 2L", price: 41, category: "Bebidas", type: "standard", img: "img/SANGRIA.PNG", desc: "Sabor sangría." },
+            { id: 345, name: "Zuko tamarindo", price: 12, category: "Bebidas", type: "standard", img: "img/z.PNG", desc: "Polvo para preparar." },
+
+            // === SNACKS Y PANADERÍA ===
+ { id: 136, name: "Lechuguilla chica", price: 13, category: "Snacks", type: "standard", img: "img/L.PNG", desc: "Distintos sabores.", options: [{label: "1 Pieza", w: 1}] },
+            { id: 401, name: "Sabritas sal 171g", price: 58, category: "Snacks", type: "standard", img: "img/S1.PNG", desc: "Bolsa familiar." },
+            { id: 402, name: "Sabritas sal 74g", price: 30, category: "Snacks", type: "standard", img: "img/S7.PNG", desc: "Bolsa mediana." },
+            { id: 403, name: "Sabritas sal 42g", price: 26, category: "Snacks", type: "standard", img: "img/S4.PNG", desc: "Bolsa chica." },
+            { id: 404, name: "Sabritas Limón 46g", price: 25, category: "Snacks", type: "standard", img: "img/LI.PNG", desc: "Con sal y limón." },
+            { id: 405, name: "Sabritas adobadas 48g", price: 25, category: "Snacks", type: "standard", img: "img/SA.PNG", desc: "Clásicas." },
+            { id: 406, name: "Ruffles queso 120g", price: 44, category: "Snacks", type: "standard", img: "img/R.PNG", desc: "Onduladas." },
+            { id: 407, name: "Doritos Nacho 223g", price: 60, category: "Snacks", type: "standard", img: "img/D.PNG", desc: "Bolsa grande." },
+            { id: 408, name: "Doritos incognita 61g", price: 24, category: "Snacks", type: "standard", img: "img/DI.PNG", desc: "Sabor misterio." },
+            { id: 409, name: "Doritos harina 500g", price: 44, category: "Snacks", type: "standard", img: "img/DH.PNG", desc: "Bolsa." },
+            { id: 410, name: "Cheetos torciditos 120g", price: 29, category: "Snacks", type: "standard", img: "img/CH.PNG", desc: "De queso." },
+            { id: 411, name: "Cheetos bolita 46g", price: 23, category: "Snacks", type: "standard", img: "img/B.PNG", desc: "De queso." },
+            { id: 412, name: "Cheetos PUFF 44g", price: 23, category: "Snacks", type: "standard", img: "img/PF.PNG", desc: "De queso." },
+            { id: 413, name: "Crujitos 42g", price: 12, category: "Snacks", type: "standard", img: "img/CRUJI.PNG", desc: "Queso y chile." },
+            { id: 414, name: "Takis Fuego 70g", price: 22, category: "Snacks", type: "standard", img: "img/T.PNG", desc: "Rollitos picantes." },
+                     { id: 416, name: "Palomitas ACT naturales", price: 20, category: "Snacks", type: "standard", img: "img/ACT.PNG", desc: "Para microondas." },
+            { id: 417, name: "Totopos Yun", price: 36, category: "Snacks", type: "standard", img: "", desc: "Bolsa." },
+            { id: 418, name: "Tostadas Alcaraz 153g", price: 31, category: "Snacks", type: "standard", img: "img/AL.PNG", desc: "Caseras." },
+            { id: 419, name: "Tostadas norteñas 40pzas", price: 45, category: "Snacks", type: "standard", img: "img/tn.png", desc: "Paquete." },
+            { id: 420, name: "Papas Festinas naturales 90g", price: 28, category: "Snacks", type: "standard", img: "img/fn.png", desc: "Caseras." },
+            { id: 421, name: "Miss Bananitas platanitos", price: 27, category: "Snacks", type: "standard", img: "", desc: "Fritos dulces." },
+            { id: 422, name: "Mini Chokis 42g", price: 12, category: "Snacks", type: "standard", img: "", desc: "Galletas con chispas." },
+            { id: 423, name: "Pingüinos Hershey 80g", price: 24, category: "Snacks", type: "standard", img: "", desc: "Pastelitos." },
+            { id: 424, name: "Galleta Lancelot", price: 51, category: "Snacks", type: "standard", img: "", desc: "Surtido." },
+            { id: 425, name: "Caja de galletas Trinidad", price: 46, category: "Snacks", type: "standard", img: "", desc: "Surtido rico." },
+            { id: 426, name: "Gomilocas dientes", price: 19, category: "Snacks", type: "standard", img: "", desc: "Gomitas dulces." },
+            { id: 427, name: "Cranky mini 15g", price: 7, category: "Snacks", type: "standard", img: "", desc: "Chocolate con arroz." },
+            { id: 428, name: "Pan Blanco Bimbo 620g", price: 50, category: "Snacks", type: "standard", img: "img/pmm.png", desc: "De caja." },
+            { id: 429, name: "Pan integral 300g Bimbo", price: 29, category: "Snacks", type: "standard", img: "img/p3.png", desc: "Chico." },
+            { id: 430, name: "Pan Integral Bimbo 620g", price: 54, category: "Snacks", type: "standard", img: "img/pi.png", desc: "Grande." },
+            { id: 431, name: "Pan Bimbo Cero Cero 610g", price: 65, category: "Snacks", type: "standard", img: "img/bimbo cero cero.png", desc: "Sin azúcar." },
       
-            { id:101,name:"Jitomate",price:69,category:"Frescos",type:"weight",piecesPerKg:6,img:"img/jitomate.png",desc:"Jitomate fresco." },
-            { id:160,name:"Limón",price:40,category:"Frescos",type:"weight",piecesPerKg:6,img:"img/limon.png",desc:"Limón fresco." },
-            { id:102,name:"Jitomate cherry",price:76,category:"Frescos",type:"weight",piecesPerKg:40,img:"img/jitomate cherry.png",desc:"Ideal para ensaladas." },
-            { id:103,name:"Cebolla",price:22,category:"Frescos",type:"weight",piecesPerKg:4,img:"img/cebolla.png",desc:"Cebolla blanca." },
-            { id:104,name:"Cebolla morada",price:23,category:"Frescos",type:"weight",piecesPerKg:4,img:"img/cebolla morada.png",desc:"Ideal para cortes finos." },
-            { id:105,name:"Papa",price:36,category:"Frescos",type:"weight",piecesPerKg:6,img:"img/papa.png",desc:"Papa blanca." },
-            { id:106,name:"Tomate verde",price:45,category:"Frescos",type:"weight",piecesPerKg:15,img:"img/tomate verde.png",desc:"Fresco de hoja." },
-            { id:107,name:"Aguacate",price:64,category:"Frescos",type:"weight",piecesPerKg:4.5,img:"img/aguacate.png",desc:"Aguacate Hass." },
-            { id:108,name:"Pepino",price:23.5,category:"Frescos",type:"weight",piecesPerKg:3,img:"img/pepino.png",desc:"Crujiente." },
-            { id:109,name:"Zanahoria",price:23,category:"Frescos",type:"weight",piecesPerKg:8,img:"img/zanahoria.png",desc:"Fresa y sin rabo." },
-            { id:110,name:"Brócoli Corona",price:65,category:"Frescos",type:"weight",piecesPerKg:2,img:"img/brocoli corona.png",desc:"Corona Mister Luck." },
-            { id:111,name:"Champiñón entero",price:129,category:"Frescos",type:"weight",piecesPerKg:50,img:"img/champiñones enteros.png",desc:"Fresco a granel." },
-            { id:112,name:"Col morada",price:33,category:"Frescos",type:"weight",piecesPerKg:1,img:"img/col morada.png",desc:"A granel." },
-            { id:113,name:"Calabaza",price:30,category:"Frescos",type:"weight",piecesPerKg:5,img:"img/calabaza.png",desc:"Calabacita tierna." },
-            { id:114,name:"Rábano",price:50,category:"Frescos",type:"weight",piecesPerKg:30,img:"img/rabano.png",desc:"A granel." },
-            { id:115,name:"Chile serrano",price:87,category:"Frescos",type:"weight",piecesPerKg:40,img:"img/chile serrano.png",desc:"Picante y fresco." },
-            { id:116,name:"Chile habanero",price:176,category:"Frescos",type:"weight",piecesPerKg:60,img:"img/chile habanero.png",desc:"Muy picante." },
-            { id:117,name:"Chile pasilla verde",price:86,category:"Frescos",type:"weight",piecesPerKg:20,img:"img/chile pasilla verde.png",desc:"A granel." },
-            { id:118,name:"Espinaca a granel",price:149,category:"Frescos",type:"weight",piecesPerKg:10,img:"img/espinaca a granel.png",desc:"Fresca bolsas ya hechas." },
-            { id:119,name:"Chayote",price:33,category:"Frescos",type:"weight",piecesPerKg:3,img:"img/chayote.png",desc:"Sin espinas." },
-            { id:120,name:"Ejote",price:86,category:"Frescos",type:"weight",piecesPerKg:100,img:"img/ejote.png",desc:"A granel." },
-            { id:121,name:"Manzana gala",price:69,category:"Frescos",type:"weight",piecesPerKg:5,img:"img/manzana gala.png",desc:"Dulce y firme." },
-            { id:122,name:"Manzana granny",price:64,category:"Frescos",type:"weight",piecesPerKg:5,img:"img/manzana granny.png",desc:"Verde acidita." },
-            { id:123,name:"Plátano",price:24,category:"Frescos",type:"weight",piecesPerKg:5,img:"img/platano.png",desc:"Muy fresco." },
-            { id:124,name:"Plátano manzano",price:42,category:"Frescos",type:"weight",piecesPerKg:8,img:"img/platano manzano.png",desc:"Pequeño y dulce." },
-            { id:125,name:"Pera",price:61,category:"Frescos",type:"weight",piecesPerKg:5,img:"img/pera.png",desc:"Jugosa." },
-            { id:126,name:"Kiwi",price:129,category:"Frescos",type:"weight",piecesPerKg:10,img:"img/kiwi.png",desc:"Importado." },
-            { id:127,name:"Mango indio",price:50,category:"Frescos",type:"weight",piecesPerKg:4,img:"img/mango indio.png",desc:"Dulce de temporada." },
-            { id:128,name:"Mango ataulfo",price:52,category:"Frescos",type:"weight",piecesPerKg:4,img:"img/Mango ataulfo.png",desc:"Delicioso." },
-            { id:129,name:"Mandarina",price:59,category:"Frescos",type:"weight",piecesPerKg:8,img:"img/Mandarina.png",desc:"Jugosa e importada." },
-            { id:130,name:"Naranja dulce",price:28,category:"Frescos",type:"weight",piecesPerKg:4.5,img:"img/Naranja dulce.png",desc:"Para jugo." },
-            { id:131,name:"Naranja sin semilla",price:48,category:"Frescos",type:"weight",piecesPerKg:4.5,img:"img/Naranja sin semillqa.png",desc:"Importada." },
-            { id:132,name:"Piña",price:27.5,category:"Frescos",type:"fraction",img:"img/piña.png",desc:"Miel.",options:[{"label":"1 Pieza entera","w":1.5},{"label":"Media pieza","w":0.75}] },
-            { id:133,name:"Melón",price:33,category:"Frescos",type:"fraction",img:"img/melon.png",desc:"Aromático.",options:[{"label":"1 Pieza entera","w":1.8},{"label":"Media pieza","w":0.9}] },
-            { id:134,name:"Sandía",price:20,category:"Frescos",type:"fraction",img:"img/sandia.png",desc:"Rayada.",options:[{"label":"1 Pieza entera","w":5},{"label":"Media pieza","w":2.5},{"label":"Cuarto de pieza","w":1.25}] },
-            { id:135,name:"Papaya",price:24,category:"Frescos",type:"fraction",img:"img/papaya.png",desc:"Maradol.",options:[{"label":"1 Pieza entera","w":1.8},{"label":"Media pieza","w":0.9}] },
-            { id:137,name:"Lechuga romana",price:30,category:"Frescos",type:"fraction",img:"img/lechuga romana.png",desc:"Fresa.",options:[{"label":"1 Pieza","w":1},{"label":"Media pieza","w":0.5}] },
-            { id:138,name:"Cilantro",price:14,category:"Frescos",type:"standard",img:"img/1.png",desc:"Manojo." },
-            { id:139,name:"Perejil",price:13,category:"Frescos",type:"standard",img:"img/2.png",desc:"Manojo." },
-            { id:140,name:"Hierbabuena",price:14,category:"Frescos",type:"standard",img:"img/3.png",desc:"Manojo." },
-            { id:141,name:"Elote amarillo 3 piezas",price:61,category:"Frescos",type:"standard",img:"img/4.png",desc:"Paquete." },
-            { id:142,name:"Fresa",price:66,category:"Frescos",type:"standard",img:"img/5.png",desc:"Cajita." },
-            { id:143,name:"Frambuesa fresca",price:46,category:"Frescos",type:"standard",img:"img/6.png",desc:"Cajita." },
-            { id:144,name:"Arándano fresco 170g",price:46,category:"Frescos",type:"standard",img:"img/7.png",desc:"Cajita." },
-            { id:145,name:"Elote desgranado",price:24,category:"Frescos",type:"standard",img:"img/8.png",desc:"Bolsa." },
-            { id:146,name:"Chícharos desvainados",price:250,category:"Frescos",type:"fraction",img:"",desc:"Aprox 100gr",options:[{"label":"1 Bolsita (100g)","w":0.1},{"label":"Cuarto (250g)","w":0.25},{"label":"Medio Kilo","w":1}] },
-            { id:201,name:"Leche Lala 100 tapa dorada 1L",price:46,category:"Lácteos",type:"standard",img:"img/10.png",desc:"Sin lactosa." },
-            { id:202,name:"Leche Lala 100 azul 1L",price:46,category:"Lácteos",type:"standard",img:"img/11.png",desc:"Proteína." },
-            { id:203,name:"Leche Lala deslactosada 2% 1L",price:32,category:"Lácteos",type:"standard",img:"img/12.png",desc:"Baja en grasa." },
-            { id:204,name:"Leche Lala deslactosada 1.8L",price:56,category:"Lácteos",type:"standard",img:"img/13.png",desc:"Familiar." },
-            { id:205,name:"Leche Lala entera 350ml",price:16,category:"Lácteos",type:"standard",img:"img/14.png",desc:"Chica." },
-            { id:215,name:"Leche Lala entera 1L",price:35,category:"Lácteos",type:"standard",img:"img/30.png",desc:"Entera 1L." },
-            { id:206,name:"Leche Santa Clara deslactosada 1L",price:35,category:"Lácteos",type:"standard",img:"img/15.png",desc:"Fácil digestión." },
-            { id:207,name:"Santa Clara entera 1L",price:35,category:"Lácteos",type:"standard",img:"img/16.png",desc:"Clásica." },
-            { id:208,name:"Santa Clara light 1L",price:35,category:"Lácteos",type:"standard",img:"img/17.png",desc:"Baja en grasa." },
-            { id:209,name:"Santa Clara desl light 1L",price:35,category:"Lácteos",type:"standard",img:"img/18.png",desc:"Doble beneficio." },
-            { id:210,name:"Leche Sello Rojo 1L",price:35,category:"Lácteos",type:"standard",img:"img/19.png",desc:"Entera." },
-            { id:211,name:"Leche Monarca entera 1.8L",price:50,category:"Lácteos",type:"standard",img:"img/20.png",desc:"Familiar." },
-            { id:212,name:"Yogurt Chobani mango 190g",price:39,category:"Lácteos",type:"standard",img:"img/21.png",desc:"Griego." },
-            { id:213,name:"Yogurt Chobani Flip Peanut 128g",price:36,category:"Lácteos",type:"standard",img:"img/22.png",desc:"Griego con topping." },
-            { id:214,name:"Yogurt Unicornio 1L",price:66,category:"Lácteos",type:"standard",img:"img/23.png",desc:"Para niños." },
-            { id:216,name:"Yakult 3/80ml",price:25,category:"Lácteos",type:"standard",img:"img/24.png",desc:"Probióticos." },
-            { id:301,name:"Coca-Cola 2L",price:35,category:"Bebidas",type:"standard",img:"img/c2l.png",desc:"Refresco." },
-            { id:302,name:"Coca-Cola 1L",price:20,category:"Bebidas",type:"standard",img:"img/c1l.png",desc:"Refresco." },
-            { id:303,name:"Coca-Cola 600ml",price:19,category:"Bebidas",type:"standard",img:"img/c6.png",desc:"Personal." },
-            { id:304,name:"Coca-Cola sin azúcar 2L",price:35,category:"Bebidas",type:"standard",img:"img/csa2.png",desc:"Zero." },
-            { id:305,name:"Coca-Cola sin azúcar 600ml",price:20,category:"Bebidas",type:"standard",img:"img/csa6.png",desc:"Zero personal." },
-            { id:306,name:"Pepsi 2L",price:33,category:"Bebidas",type:"standard",img:"img/p2l.png",desc:"Refresco." },
-            { id:307,name:"Pepsi 600ml",price:18,category:"Bebidas",type:"standard",img:"img/p6.png",desc:"Personal." },
-            { id:308,name:"7UP 2L",price:32,category:"Bebidas",type:"standard",img:"img/7up2.png",desc:"Lima limón." },
-            { id:309,name:"7UP 600ml",price:19,category:"Bebidas",type:"standard",img:"img/7up6.png",desc:"Personal." },
-            { id:310,name:"Sprite 2L",price:35,category:"Bebidas",type:"standard",img:"img/s2l.png",desc:"Lima limón." },
-            { id:311,name:"Sprite 600ml",price:19,category:"Bebidas",type:"standard",img:"img/s6.png",desc:"Personal." },
-            { id:312,name:"Sprite 1L",price:22,category:"Bebidas",type:"standard",img:"img/s1l.png",desc:"Mediana." },
-            { id:313,name:"Sprite 300ml",price:12,category:"Bebidas",type:"standard",img:"img/s3.png",desc:"Mini." },
-            { id:314,name:"Sprite sin azúcar 600ml",price:22,category:"Bebidas",type:"standard",img:"img/ss6.png",desc:"Zero." },
-            { id:315,name:"Squirt 2L",price:40,category:"Bebidas",type:"standard",img:"img/sq2l.png",desc:"Toronja." },
-            { id:316,name:"Squirt sin azúcar 2L",price:39,category:"Bebidas",type:"standard",img:"img/sqs2.png",desc:"Toronja light." },
-            { id:317,name:"Squirt 600ml",price:19,category:"Bebidas",type:"standard",img:"img/sq6.png",desc:"Personal." },
-            { id:318,name:"Sidral 1L",price:24,category:"Bebidas",type:"standard",img:"img/sd1.png",desc:"Manzana." },
-            { id:319,name:"Mundet 2L",price:32,category:"Bebidas",type:"standard",img:"img/m2l.png",desc:"Manzana rojo." },
-            { id:320,name:"Manzanita Sol 600ml",price:20,category:"Bebidas",type:"standard",img:"img/ma6.png",desc:"Manzana." },
-            { id:321,name:"Fanta naranja 600ml",price:22,category:"Bebidas",type:"standard",img:"img/f6.png",desc:"Naranja." },
-            { id:322,name:"Fresca 600ml",price:22,category:"Bebidas",type:"standard",img:"img/fr6.png",desc:"Toronja rosa." },
-            { id:323,name:"Peñafiel mineral 600ml",price:20,category:"Bebidas",type:"standard",img:"img/pm6.png",desc:"Agua mineral." },
-            { id:324,name:"Peñafiel naranjada 2L",price:36,category:"Bebidas",type:"standard",img:"img/np2.png",desc:"Refresco." },
-            { id:325,name:"Peñafiel Twist limón 600ml",price:20,category:"Bebidas",type:"standard",img:"img/pwl.png",desc:"Mineral con limón." },
-            { id:326,name:"Naranjada SR 1L",price:31,category:"Bebidas",type:"standard",img:"img/nsr.png",desc:"Jugo." },
-            { id:327,name:"Topo Chico 1.5L",price:41,category:"Bebidas",type:"standard",img:"img/t1.5.png",desc:"Agua mineral." },
-            { id:328,name:"Topo Chico 600ml",price:23,category:"Bebidas",type:"standard",img:"img/t6.png",desc:"Mineral botella." },
-            { id:329,name:"Topo Chico limón 600ml",price:22,category:"Bebidas",type:"standard",img:"img/tl.png",desc:"Sabor limón." },
-            { id:330,name:"Topo Chico toronja",price:22,category:"Bebidas",type:"standard",img:"img/tt.png",desc:"Sabor toronja." },
-            { id:331,name:"Agua Colimán 1L",price:27,category:"Bebidas",type:"standard",img:"img/rc.png",desc:"Especificar sabor." },
-            { id:332,name:"Agua Ciel 5L",price:36,category:"Bebidas",type:"standard",img:"img/c5.png",desc:"Garrafón chico." },
-            { id:333,name:"Agua Frescolima 1L",price:29,category:"Bebidas",type:"standard",img:"img/fres.png",desc:"Especificar sabor." },
-            { id:334,name:"Skarch 750ml",price:14,category:"Bebidas",type:"standard",img:"img/s75.png",desc:"Agua natural." },
-            { id:335,name:"Agua de coco 1L",price:56,category:"Bebidas",type:"standard",img:"",desc:"Natural." },
-            { id:336,name:"Fuze Tea durazno 1L",price:31,category:"Bebidas",type:"standard",img:"IMG/FZ1.PNG",desc:"Té frío." },
-            { id:337,name:"Fuze Tea durazno 600ml",price:24,category:"Bebidas",type:"standard",img:"IMG/FZ6.PNG",desc:"Té frío personal." },
-            { id:338,name:"Fuze Tea limón 600ml",price:24,category:"Bebidas",type:"standard",img:"IMG/FZL.PNG",desc:"Té frío personal." },
-            { id:339,name:"Jugo Ades manzana 945ml",price:34,category:"Bebidas",type:"standard",img:"IMG/AD.PNG",desc:"Soya y jugo." },
-            { id:340,name:"Electrolit uva 625ml",price:29,category:"Bebidas",type:"standard",img:"IMG/E6.PNG",desc:"Suero." },
-            { id:341,name:"Red Bull 250ml",price:40,category:"Bebidas",type:"standard",img:"IMG/RED.PNG",desc:"Energizante." },
-            { id:342,name:"Monster 473ml",price:46,category:"Bebidas",type:"standard",img:"IMG/MONSTER.PNG",desc:"Energizante verde." },
-            { id:343,name:"Sangría Casera 2L",price:41,category:"Bebidas",type:"standard",img:"IMG/SANGRIA.PNG",desc:"Sabor sangría." },
-            { id:345,name:"Zuko tamarindo",price:12,category:"Bebidas",type:"standard",img:"img/z.PNG",desc:"Polvo para preparar." },
-            { id:136,name:"Lechuguilla chica",price:13,category:"Snacks",type:"standard",img:"IMG/L.PNG",desc:"Distintos sabores." },
-            { id:401,name:"Sabritas sal 171g",price:58,category:"Snacks",type:"standard",img:"IMG/S1.PNG",desc:"Bolsa familiar." },
-            { id:402,name:"Sabritas sal 74g",price:30,category:"Snacks",type:"standard",img:"IMG/S7.PNG",desc:"Bolsa mediana." },
-            { id:403,name:"Sabritas sal 42g",price:26,category:"Snacks",type:"standard",img:"IMG/S4.PNG",desc:"Bolsa chica." },
-            { id:404,name:"Sabritas Limón 46g",price:25,category:"Snacks",type:"standard",img:"IMG/LI.PNG",desc:"Con sal y limón." },
-            { id:405,name:"Sabritas adobadas 48g",price:25,category:"Snacks",type:"standard",img:"IMG/SA.PNG",desc:"Clásicas." },
-            { id:406,name:"Ruffles queso 120g",price:44,category:"Snacks",type:"standard",img:"IMG/R.PNG",desc:"Onduladas." },
-            { id:407,name:"Doritos Nacho 223g",price:60,category:"Snacks",type:"standard",img:"IMG/D.PNG",desc:"Bolsa grande." },
-            { id:408,name:"Doritos incognita 61g",price:24,category:"Snacks",type:"standard",img:"IMG/DI.PNG",desc:"Sabor misterio." },
-            { id:409,name:"Doritos harina 500g",price:44,category:"Snacks",type:"standard",img:"IMG/DH.PNG",desc:"Bolsa." },
-            { id:410,name:"Cheetos torciditos 120g",price:29,category:"Snacks",type:"standard",img:"IMG/CH.PNG",desc:"De queso." },
-            { id:411,name:"Cheetos bolita 46g",price:23,category:"Snacks",type:"standard",img:"IMG/B.PNG",desc:"De queso." },
-            { id:412,name:"Cheetos PUFF 44g",price:23,category:"Snacks",type:"standard",img:"IMG/PF.PNG",desc:"De queso." },
-            { id:413,name:"Crujitos 42g",price:12,category:"Snacks",type:"standard",img:"IMG/CRUJI.PNG",desc:"Queso y chile." },
-            { id:414,name:"Takis Fuego 70g",price:22,category:"Snacks",type:"standard",img:"IMG/T.PNG",desc:"Rollitos picantes." },
-            { id:416,name:"Palomitas ACT naturales",price:20,category:"Snacks",type:"standard",img:"IMG/ACT.PNG",desc:"Para microondas." },
-            { id:417,name:"Totopos Yun",price:36,category:"Snacks",type:"standard",img:"",desc:"Bolsa." },
-            { id:418,name:"Tostadas Alcaraz 153g",price:31,category:"Snacks",type:"standard",img:"IMG/AL.PNG",desc:"Caseras." },
-            { id:419,name:"Tostadas norteñas 40pzas",price:45,category:"Snacks",type:"standard",img:"img/tn.png",desc:"Paquete." },
-            { id:420,name:"Papas Festinas naturales 90g",price:28,category:"Snacks",type:"standard",img:"img/fn.png",desc:"Caseras." },
-            { id:421,name:"Miss Bananitas platanitos",price:27,category:"Snacks",type:"standard",img:"",desc:"Fritos dulces." },
-            { id:422,name:"Mini Chokis 42g",price:12,category:"Snacks",type:"standard",img:"",desc:"Galletas con chispas." },
-            { id:423,name:"Pingüinos Hershey 80g",price:24,category:"Snacks",type:"standard",img:"",desc:"Pastelitos." },
-            { id:424,name:"Galleta Lancelot",price:51,category:"Snacks",type:"standard",img:"",desc:"Surtido." },
-            { id:425,name:"Caja de galletas Trinidad",price:46,category:"Snacks",type:"standard",img:"",desc:"Surtido rico." },
-            { id:426,name:"Gomilocas dientes",price:19,category:"Snacks",type:"standard",img:"",desc:"Gomitas dulces." },
-            { id:427,name:"Cranky mini 15g",price:7,category:"Snacks",type:"standard",img:"",desc:"Chocolate con arroz." },
-            { id:428,name:"Pan Blanco Bimbo 620g",price:50,category:"Snacks",type:"standard",img:"img/pmm.png",desc:"De caja." },
-            { id:429,name:"Pan integral 300g Bimbo",price:29,category:"Snacks",type:"standard",img:"img/p3.png",desc:"Chico." },
-            { id:430,name:"Pan Integral Bimbo 620g",price:54,category:"Snacks",type:"standard",img:"img/pi.png",desc:"Grande." },
-            { id:431,name:"Pan Bimbo Cero Cero 610g",price:65,category:"Snacks",type:"standard",img:"img/bimbo cero cero.png",desc:"Sin azúcar." },
-            { id:433,name:"Pan dulce (pieza)",price:12,category:"Snacks",type:"standard",img:"",desc:"Surtido local." },
-            { id:434,name:"Concha",price:15,category:"Snacks",type:"standard",img:"",desc:"Vainilla o chocolate." },
-            { id:435,name:"Bolillo",price:14,category:"Snacks",type:"standard",img:"",desc:"Pieza." },
-            { id:436,name:"Bolillito",price:14,category:"Snacks",type:"standard",img:"",desc:"Pieza chica." },
-            { id:437,name:"Telera",price:18,category:"Snacks",type:"standard",img:"",desc:"Pieza para torta." },
-            { id:438,name:"Rol canela",price:45,category:"Snacks",type:"standard",img:"",desc:"Horneado." },
-            { id:439,name:"Panqué de zanahoria",price:21,category:"Snacks",type:"standard",img:"",desc:"Rebanada." },
-            { id:440,name:"Panqué de nuez",price:20,category:"Snacks",type:"standard",img:"",desc:"Rebanada." },
-            { id:441,name:"Pay de Queso",price:20,category:"Snacks",type:"standard",img:"",desc:"Rebanada individual." },
-            { id:442,name:"Tamal de ceniza",price:25,category:"Snacks",type:"standard",img:"",desc:"Calientito." },
-            { id:443,name:"Tamal de elote",price:25,category:"Snacks",type:"standard",img:"",desc:"Dulce." },
-            { id:444,name:"Empanada",price:23,category:"Snacks",type:"standard",img:"",desc:"Sujeto a disponibilidad." },
-            { id:445,name:"Crepa mediana",price:59,category:"Snacks",type:"standard",img:"",desc:"Preparada." },
-            { id:446,name:"Arroz con leche Majoantojo",price:27,category:"Snacks",type:"standard",img:"",desc:"Postre frío." },
-            { id:447,name:"Yakimeshi",price:160,category:"Snacks",type:"standard",img:"",desc:"Comida preparada." },
-            { id:501,name:"Huevo rojo",price:6,category:"Despensa",type:"standard",img:"img/hv.png",desc:"Pieza suelta." },
-            { id:502,name:"Huevo blanco",price:40,category:"Despensa",type:"weight",piecesPerKg:15,img:"img/hvb.png",desc:"Venta por kilo." },
-            { id:503,name:"Tortillas Mi Mesa",price:17,category:"Despensa",type:"standard",img:"",desc:"Paquete." },
-            { id:504,name:"Tortillas Lupita",price:17,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"Por kilo." },
-            { id:505,name:"Tortilla harina Frank M",price:40,category:"Despensa",type:"standard",img:"",desc:"Paquete." },
-            { id:506,name:"Tortilla de mano Yepetos",price:28,category:"Despensa",type:"standard",img:"",desc:"Paquete." },
-            { id:507,name:"Tortillas de mano comal",price:27,category:"Despensa",type:"standard",img:"",desc:"Frescas." },
-            { id:508,name:"Aceite Capullo de soya 845ml",price:46,category:"Despensa",type:"standard",img:"",desc:"Vegetal." },
-            { id:509,name:"Aceite Oliva Carbonell 750ml",price:217,category:"Despensa",type:"standard",img:"",desc:"Extra virgen." },
-            { id:510,name:"Aceite Oliva Carbonell 250ml",price:92,category:"Despensa",type:"standard",img:"",desc:"Extra virgen." },
-            { id:511,name:"Aceite Canoil 946ml",price:46,category:"Despensa",type:"standard",img:"",desc:"Soya." },
-            { id:512,name:"Azúcar",price:24,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"Estándar a granel." },
-            { id:513,name:"Frijoles rikkos",price:32,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:514,name:"Frijoles naturales",price:22,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:515,name:"Frijoles Patos Puercos",price:26,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:516,name:"Frijoles fritos Mireya",price:25,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:517,name:"Frijol azufrado",price:41,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"A granel por kilo." },
-            { id:518,name:"Frijol texano",price:27,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"A granel por kilo." },
-            { id:519,name:"Pasta fetuccini",price:31,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:520,name:"Pasta fusilli",price:31,category:"Despensa",type:"standard",img:"",desc:"Bolsa." },
-            { id:521,name:"Knorr pollo 2 cubos",price:7,category:"Despensa",type:"standard",img:"",desc:"Sazonador." },
-            { id:522,name:"Miel orgánica Pósima",price:90,category:"Despensa",type:"standard",img:"",desc:"Frasco." },
-            { id:523,name:"Enmielda saboralia",price:55,category:"Despensa",type:"standard",img:"",desc:"Frasco." },
-            { id:524,name:"Chocomilk 350g",price:56,category:"Despensa",type:"standard",img:"",desc:"Polvo sabor chocolate." },
-            { id:525,name:"Carnation Clavel 360ml",price:25,category:"Despensa",type:"standard",img:"",desc:"Leche evaporada." },
-            { id:526,name:"Mayonesa McCormick 105g",price:22,category:"Despensa",type:"standard",img:"",desc:"Frasco chico." },
-            { id:527,name:"Mayonesa McCormick 190g",price:32,category:"Despensa",type:"standard",img:"",desc:"Frasco mediano." },
-            { id:528,name:"Mayonesa McCormick 390g",price:57,category:"Despensa",type:"standard",img:"",desc:"Frasco grande." },
-            { id:529,name:"Salsa Lara Taquera",price:20,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:530,name:"Salsa Lara 3 Chiles",price:20,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:531,name:"Salsa Mireya",price:23,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:532,name:"Salsa Rico",price:27,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:533,name:"Salsa deli",price:27,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:534,name:"Flor de Tabasco 500ml",price:40,category:"Despensa",type:"standard",img:"",desc:"Botella." },
-            { id:535,name:"Tajín bajo en sodio 142g",price:47,category:"Despensa",type:"standard",img:"",desc:"Chilito en polvo." },
-            { id:536,name:"Rajas costeñas 105g",price:13,category:"Despensa",type:"standard",img:"",desc:"Lata pequeña." },
-            { id:537,name:"Cola loca 3.5g",price:27,category:"Despensa",type:"standard",img:"",desc:"Pegamento." },
-            { id:538,name:"Palillos",price:12,category:"Despensa",type:"standard",img:"",desc:"Cajita." },
-            { id:539,name:"Hielo 1.25kg",price:16,category:"Despensa",type:"standard",img:"",desc:"Bolsa chica." },
-            { id:540,name:"Hielo 3kg",price:27,category:"Despensa",type:"standard",img:"",desc:"Bolsa mediana." },
-            { id:541,name:"Hielo 5kg",price:30,category:"Despensa",type:"standard",img:"",desc:"Bolsa grande." },
-            { id:542,name:"Whiskas salmón sobre",price:13,category:"Despensa",type:"standard",img:"",desc:"Gatos." },
-            { id:543,name:"Croqueta gatina",price:43,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"A granel por kilo." },
-            { id:544,name:"Croqueta de cachorro",price:39,category:"Despensa",type:"weight",piecesPerKg:1,img:"",desc:"A granel por kilo." },
-            { id:545,name:"Pedigree sobre",price:14,category:"Despensa",type:"standard",img:"",desc:"Perros." },
-            { id:546,name:"Windex 640ml",price:56,category:"Despensa",type:"standard",img:"",desc:"Limpiavidrios." },
-            { id:547,name:"Microdyn 15ml",price:29,category:"Despensa",type:"standard",img:"",desc:"Desinfectante." },
-            { id:548,name:"Destapacaños",price:49,category:"Despensa",type:"standard",img:"",desc:"Líquido." },
-            { id:549,name:"Suavizante Carisma 1L",price:35,category:"Despensa",type:"standard",img:"",desc:"Para ropa." },
-            { id:550,name:"Pinol 1.8L",price:58,category:"Despensa",type:"standard",img:"",desc:"Limpiador multiusos." },
-            { id:551,name:"Carisma detergente polvo",price:145,category:"Despensa",type:"standard",img:"",desc:"Bolsa grande." },
-            { id:552,name:"Pastilla de cloro Frodum",price:20,category:"Despensa",type:"standard",img:"",desc:"Para baño." },
-            { id:553,name:"Fibra metálica chica",price:21,category:"Despensa",type:"standard",img:"",desc:"Esponja." },
-            { id:554,name:"Lija de agua",price:14,category:"Despensa",type:"standard",img:"",desc:"Hoja." },
-            { id:555,name:"Bolsa de basura mediana",price:8,category:"Despensa",type:"standard",img:"",desc:"Paquete." },
-            { id:556,name:"Bolsa de basura grande",price:9,category:"Despensa",type:"standard",img:"",desc:"Paquete." }
+            { id: 433, name: "Pan dulce (pieza)", price: 12, category: "Snacks", type: "standard", img: "", desc: "Surtido local." },
+            { id: 434, name: "Concha", price: 15, category: "Snacks", type: "standard", img: "", desc: "Vainilla o chocolate." },
+            { id: 435, name: "Bolillo", price: 14, category: "Snacks", type: "standard", img: "", desc: "Pieza." },
+            { id: 436, name: "Bolillito", price: 14, category: "Snacks", type: "standard", img: "", desc: "Pieza chica." },
+            { id: 437, name: "Telera", price: 18, category: "Snacks", type: "standard", img: "", desc: "Pieza para torta." },
+            { id: 438, name: "Rol canela", price: 45, category: "Snacks", type: "standard", img: "", desc: "Horneado." },
+            { id: 439, name: "Panqué de zanahoria", price: 21, category: "Snacks", type: "standard", img: "", desc: "Rebanada." },
+            { id: 440, name: "Panqué de nuez", price: 20, category: "Snacks", type: "standard", img: "", desc: "Rebanada." },
+            { id: 441, name: "Pay de Queso", price: 20, category: "Snacks", type: "standard", img: "", desc: "Rebanada individual." },
+            { id: 442, name: "Tamal de ceniza", price: 25, category: "Snacks", type: "standard", img: "", desc: "Calientito." },
+            { id: 443, name: "Tamal de elote", price: 25, category: "Snacks", type: "standard", img: "", desc: "Dulce." },
+            { id: 444, name: "Empanada", price: 23, category: "Snacks", type: "standard", img: "", desc: "Sujeto a disponibilidad." },
+            { id: 445, name: "Crepa mediana", price: 59, category: "Snacks", type: "standard", img: "", desc: "Preparada." },
+            { id: 446, name: "Arroz con leche Majoantojo", price: 27, category: "Snacks", type: "standard", img: "", desc: "Postre frío." },
+            { id: 447, name: "Yakimeshi", price: 160, category: "Snacks", type: "standard", img: "", desc: "Comida preparada." },
+
+            // === DESPENSA Y LIMPIEZA ===
+            { id: 501, name: "Huevo rojo", price: 6, category: "Despensa", type: "standard", img: "img/hv.png", desc: "Pieza suelta." },
+            { id: 502, name: "Huevo blanco", price: 39, category: "Despensa", type: "weight", piecesPerKg: 15, img: "img/hvb.png", desc: "Venta por kilo." },
+            { id: 503, name: "Tortillas Mi Mesa", price: 17, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 504, name: "Tortillas Lupita", price: 17, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "Por kilo." },
+            { id: 505, name: "Tortilla harina Frank M", price: 40, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 506, name: "Tortilla de mano Yepetos", price: 28, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 507, name: "Tortillas de mano comal", price: 27, category: "Despensa", type: "standard", img: "", desc: "Frescas." },
+            { id: 508, name: "Aceite Capullo de soya 845ml", price: 46, category: "Despensa", type: "standard", img: "", desc: "Vegetal." },
+            { id: 509, name: "Aceite Oliva Carbonell 750ml", price: 217, category: "Despensa", type: "standard", img: "", desc: "Extra virgen." },
+            { id: 510, name: "Aceite Oliva Carbonell 250ml", price: 92, category: "Despensa", type: "standard", img: "", desc: "Extra virgen." },
+            { id: 511, name: "Aceite Canoil 946ml", price: 46, category: "Despensa", type: "standard", img: "", desc: "Soya." },
+            { id: 512, name: "Azúcar", price: 24, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "Estándar a granel." },
+            { id: 513, name: "Frijoles rikkos", price: 32, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 514, name: "Frijoles naturales", price: 22, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 515, name: "Frijoles Patos Puercos", price: 26, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 516, name: "Frijoles fritos Mireya", price: 25, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 517, name: "Frijol azufrado", price: 41, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 518, name: "Frijol texano", price: 27, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 519, name: "Pasta fetuccini", price: 31, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 520, name: "Pasta fusilli", price: 31, category: "Despensa", type: "standard", img: "", desc: "Bolsa." },
+            { id: 521, name: "Knorr pollo 2 cubos", price: 7, category: "Despensa", type: "standard", img: "", desc: "Sazonador." },
+            { id: 522, name: "Miel orgánica Pósima", price: 90, category: "Despensa", type: "standard", img: "", desc: "Frasco." },
+            { id: 523, name: "Enmielda saboralia", price: 55, category: "Despensa", type: "standard", img: "", desc: "Frasco." },
+            { id: 524, name: "Chocomilk 350g", price: 56, category: "Despensa", type: "standard", img: "", desc: "Polvo sabor chocolate." },
+            { id: 525, name: "Carnation Clavel 360ml", price: 25, category: "Despensa", type: "standard", img: "", desc: "Leche evaporada." },
+            { id: 526, name: "Mayonesa McCormick 105g", price: 22, category: "Despensa", type: "standard", img: "", desc: "Frasco chico." },
+            { id: 527, name: "Mayonesa McCormick 190g", price: 32, category: "Despensa", type: "standard", img: "", desc: "Frasco mediano." },
+            { id: 528, name: "Mayonesa McCormick 390g", price: 57, category: "Despensa", type: "standard", img: "", desc: "Frasco grande." },
+            { id: 529, name: "Salsa Lara Taquera", price: 20, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 530, name: "Salsa Lara 3 Chiles", price: 20, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 531, name: "Salsa Mireya", price: 23, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 532, name: "Salsa Rico", price: 27, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 533, name: "Salsa deli", price: 27, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 534, name: "Flor de Tabasco 500ml", price: 40, category: "Despensa", type: "standard", img: "", desc: "Botella." },
+            { id: 535, name: "Tajín bajo en sodio 142g", price: 47, category: "Despensa", type: "standard", img: "", desc: "Chilito en polvo." },
+            { id: 536, name: "Rajas costeñas 105g", price: 13, category: "Despensa", type: "standard", img: "", desc: "Lata pequeña." },
+            { id: 537, name: "Cola loca 3.5g", price: 27, category: "Despensa", type: "standard", img: "", desc: "Pegamento." },
+            { id: 538, name: "Palillos", price: 12, category: "Despensa", type: "standard", img: "", desc: "Cajita." },
+            { id: 539, name: "Hielo 1.25kg", price: 16, category: "Despensa", type: "standard", img: "", desc: "Bolsa chica." },
+            { id: 540, name: "Hielo 3kg", price: 27, category: "Despensa", type: "standard", img: "", desc: "Bolsa mediana." },
+            { id: 541, name: "Hielo 5kg", price: 30, category: "Despensa", type: "standard", img: "", desc: "Bolsa grande." },
+            { id: 542, name: "Whiskas salmón sobre", price: 13, category: "Despensa", type: "standard", img: "", desc: "Gatos." },
+            { id: 543, name: "Croqueta gatina", price: 43, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 544, name: "Croqueta de cachorro", price: 39, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", desc: "A granel por kilo." },
+            { id: 545, name: "Pedigree sobre", price: 14, category: "Despensa", type: "standard", img: "", desc: "Perros." },
+            { id: 546, name: "Windex 640ml", price: 56, category: "Despensa", type: "standard", img: "", desc: "Limpiavidrios." },
+            { id: 547, name: "Microdyn 15ml", price: 29, category: "Despensa", type: "standard", img: "", desc: "Desinfectante." },
+            { id: 548, name: "Destapacaños", price: 49, category: "Despensa", type: "standard", img: "", desc: "Líquido." },
+            { id: 549, name: "Suavizante Carisma 1L", price: 35, category: "Despensa", type: "standard", img: "", desc: "Para ropa." },
+            { id: 550, name: "Pinol 1.8L", price: 58, category: "Despensa", type: "standard", img: "", desc: "Limpiador multiusos." },
+            { id: 551, name: "Carisma detergente polvo", price: 145, category: "Despensa", type: "standard", img: "", desc: "Bolsa grande." },
+            { id: 552, name: "Pastilla de cloro Frodum", price: 20, category: "Despensa", type: "standard", img: "", desc: "Para baño." },
+            { id: 553, name: "Fibra metálica chica", price: 21, category: "Despensa", type: "standard", img: "", desc: "Esponja." },
+            { id: 554, name: "Lija de agua", price: 14, category: "Despensa", type: "standard", img: "", desc: "Hoja." },
+            { id: 555, name: "Bolsa de basura mediana", price: 8, category: "Despensa", type: "standard", img: "", desc: "Paquete." },
+            { id: 556, name: "Bolsa de basura grande", price: 9, category: "Despensa", type: "standard", img: "", desc: "Paquete." }
         ];
 
 
@@ -619,7 +697,7 @@
         }
 
         function setupCategories() {
-            const cats = ["Todos", "Frescos", "Lácteos", "Bebidas", "Snacks", "Despensa"];
+            const cats = ["Todos", "Frescos", "Lácteos", "Fiambre", "Bebidas", "Snacks", "Despensa"];
             const cont = document.getElementById('category-list');
             cats.forEach(c => {
                 const b = document.createElement('button');
@@ -642,14 +720,16 @@
         function renderProducts(products) {
             const cont = document.getElementById('products-container');
             cont.innerHTML = products.map(p => {
-                const priceTxt = p.type !== 'standard' ? `$${p.price.toFixed(2)}/kg` : `$${p.price.toFixed(2)}`;
+                const isVariable = p.type !== 'standard';
+                const priceTxt = isVariable ? `$${p.price.toFixed(2)}/kg` : `$${p.price.toFixed(2)}`;
+                const refBadge = isVariable ? `<span style="font-size:10px; color:#F59E0B; font-weight:700; background:#FEF3C7; padding:2px 6px; border-radius:4px; margin-left:4px;">Precio ref.</span>` : '';
                 return `
                 <div class="product-card" onclick="openProductModal(${p.id})">
-                    <div class="img-container"><img src="${p.img}" loading="lazy" class="product-img"></div>
+                    <div class="img-container"><img src="${p.img}" loading="lazy" class="product-img" onerror="this.src='img/placeholder.png'; this.onerror=null;"></div>
                     <div class="product-info-area">
                         <span class="product-category-tag">${p.category}</span>
                         <h3 class="product-title">${p.name}</h3>
-                        <div class="price-row"><span class="product-price">${priceTxt}</span></div>
+                        <div class="price-row"><span class="product-price">${priceTxt}</span>${refBadge}</div>
                     </div>
                 </div>`;
             }).join('');
@@ -952,8 +1032,17 @@
             const finalTotal = subtotal + dynamicDeliveryFee;
 
             document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
-
-            document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+            // Incentivo de ticket mínimo
+            const upsellEl = document.getElementById('cart-upsell-msg');
+            if(upsellEl) {
+                if(subtotal > 0 && subtotal < 100) {
+                    const diff = (100 - subtotal).toFixed(2);
+                    upsellEl.innerHTML = `🛵 ¡Agrega <strong>$${diff}</strong> más y tu envío baja a <strong>$15</strong>!`;
+                    upsellEl.style.display = 'block';
+                } else {
+                    upsellEl.style.display = 'none';
+                }
+            }
             const textEnvioUI = dynamicDeliveryFee === 0 && subtotal === 0 ? `$0.00` : `$${dynamicDeliveryFee.toFixed(2)}`;
             document.getElementById('cart-delivery').innerHTML = textEnvioUI;
             document.getElementById('cart-total-price').innerText = `$${finalTotal.toFixed(2)}`;
