@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Super Express | Tu súper a domicilio en Colima</title>
 <link rel="icon" href="img/favicon.png" type="image/png">
-<meta name="description" content="Frutas, verduras, lácteos, bebidas y despensa a domicilio en Colima. Entregas de 2:00 a 9:00 PM en Valle Verde, Punta Norte, Albaterra y Real Santa Bárbara.">
+<meta name="description" content="Frutas, verduras, lácteos, bebidas y despensa a domicilio en Colima. Entregas de 2:00 a 10:00 PM en Valle Verde, Punta Norte, Albaterra y Real Santa Bárbara.">
 <meta name="theme-color" content="#0E2E1F">
 <meta property="og:title" content="Super Express — Tu súper a domicilio en Colima">
 <meta property="og:description" content="Pide frutas, verduras y despensa. Te lo llevamos el mismo día.">
@@ -183,10 +183,32 @@ header{
 .cat.on{background:var(--verde-900);color:#fff;border-color:var(--verde-900)}
 .cat i{font-style:normal;font-size:15px}
 
-.rejilla{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:640px){.rejilla{grid-template-columns:repeat(3,1fr);gap:14px}}
-@media(min-width:1000px){.rejilla{grid-template-columns:repeat(4,1fr);gap:16px}}
-@media(min-width:1300px){.rejilla{grid-template-columns:repeat(5,1fr)}}
+.rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(min-width:640px){.rejilla{grid-template-columns:repeat(4,1fr);gap:13px}}
+@media(min-width:1024px){.rejilla{grid-template-columns:repeat(5,1fr);gap:15px}}
+@media(min-width:1400px){.rejilla{grid-template-columns:repeat(6,1fr)}}
+
+/* Al ir 3 por fila la tarjeta se aprieta. Estos ajustes son SOLO
+   de la parrilla: el carrusel de "Los más pedidos" no se toca. */
+.rejilla .prod{padding:6px 6px 8px;border-radius:14px}
+/* La imagen deja de ser cuadrada: se recorta a lo ancho y la tarjeta baja de alto */
+.rejilla .prod-img{aspect-ratio:5/4;border-radius:10px;margin-bottom:7px}
+.rejilla .prod-img svg{width:52%;height:78%}
+.rejilla .prod-nom{font-size:11px;line-height:1.28;height:28px;margin-bottom:7px}
+.rejilla .prod-pie{gap:4px}
+.rejilla .cinta{font-size:8px;padding:3px 5px;top:7px;left:7px;letter-spacing:.3px;border-radius:5px}
+.rejilla .etiqueta{font-size:12.5px;padding:4px 7px 4px 12px;clip-path:polygon(7px 0,100% 0,100% 100%,7px 100%,0 50%)}
+.rejilla .etiqueta u{font-size:8px;margin-left:1px}
+.rejilla .mas{width:27px;height:27px;border-radius:8px;font-size:17px}
+@media(min-width:640px){
+  .rejilla .prod{padding:8px 8px 10px;border-radius:17px}
+  .rejilla .prod-img{aspect-ratio:5/4;border-radius:12px;margin-bottom:9px}
+  .rejilla .prod-nom{font-size:12.5px;height:32px;margin-bottom:9px}
+  .rejilla .cinta{font-size:9.5px;padding:4px 8px;top:9px;left:9px}
+  .rejilla .etiqueta{font-size:16px;padding:6px 12px 6px 17px}
+  .rejilla .etiqueta u{font-size:10px}
+  .rejilla .mas{width:36px;height:36px;border-radius:11px;font-size:21px}
+}
 
 /* Fila que se desliza: los destacados no ocupan media pantalla */
 .carrusel{display:flex;gap:10px;overflow-x:auto;padding:3px 0 12px;
@@ -658,7 +680,8 @@ const CONFIG = {
     { inicio:"15:30", txt:"3:30 – 4:30 PM", bloque:"Tarde" },
     { inicio:"17:00", txt:"5:00 – 6:00 PM", bloque:"Tarde" },
     { inicio:"18:30", txt:"6:30 – 7:30 PM", bloque:"Noche" },
-    { inicio:"20:00", txt:"8:00 – 9:00 PM", bloque:"Noche" }
+    { inicio:"20:00", txt:"8:00 – 9:00 PM", bloque:"Noche" },
+    { inicio:"21:00", txt:"9:00 – 10:00 PM", bloque:"Noche" }
   ],
 
   pagos: [
@@ -1009,6 +1032,8 @@ function escribir(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch
 
 const dinero = n => '$' + Number(n).toFixed(2);
 const corto  = n => '$' + Math.round(Number(n));
+// Para las tarjetas: "$52" en vez de "$52.00", pero "$24.50" se respeta
+const precioTarjeta = n => Number(n) % 1 === 0 ? '$' + Number(n) : '$' + Number(n).toFixed(2);
 const seguro = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Quita acentos: así "platano" encuentra "Plátano"
 const plano  = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -1128,7 +1153,7 @@ function tarjeta(p){
   const variable = p.type !== 'standard';
   const precio = variable
     ? `${corto(p.price)}<u>/${unidad(p)}</u>`
-    : dinero(p.price);
+    : precioTarjeta(p.price);
   const clase = variable ? 'etiqueta aprox' : 'etiqueta';
   const cinta = p.destacado ? `<span class="cinta">Más pedido</span>` : '';
   // Los de tipo standard se pueden agregar de un toque, sin abrir la ventana
