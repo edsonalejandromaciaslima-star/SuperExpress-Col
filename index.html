@@ -774,7 +774,7 @@ const db_products = [
 // ================= FRESCOS =================
 { id: 147, name: "Limón", price: 42, category: "Frescos", type: "weight", piecesPerKg: 30, img: "", icono: "fruta", desc: "Limón mexicano de la región. Cada pieza pesa entre 30 y 35 gramos.", destacado: true },
 { id: 101, name: "Jitomate", price: 32, category: "Frescos", type: "weight", piecesPerKg: 9, img: "img/jitomate.png", desc: "Ideal para acompañar tus comidas.", destacado: true },
-{ id: 102, name: "Jitomate cherry", price: 80, category: "Frescos", type: "weight", piecesPerKg: 40, platito: 0.25, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
+{ id: 102, name: "Jitomate cherry", price: 80, category: "Frescos", type: "weight", piecesPerKg: 40, platito: 0.4, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
 { id: 103, name: "Cebolla", price: 29, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/cebolla.png", desc: "Cebolla blanca.", destacado: true },
 { id: 104, name: "Cebolla morada", price: 23, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/cebolla morada.png", desc: "Ideal para cortes finos." },
 { id: 105, name: "Papa", price: 48, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/papa.png", desc: "Papa blanca.", destacado: true },
@@ -782,8 +782,8 @@ const db_products = [
 { id: 107, name: "Aguacate", price: 96, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/aguacate.png", desc: "Aguacate Hass.", destacado: true },
 { id: 108, name: "Pepino", price: 25, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/pepino.png", desc: "Crujiente." },
 { id: 109, name: "Zanahoria", price: 23, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/zanahoria.png", desc: "Fresca y sin rabo." },
-{ id: 110, name: "Brócoli Corona", price: 65, category: "Frescos", type: "weight", piecesPerKg: 2, img: "img/brocoli corona.png", desc: "Corona Mister Luck." },
-{ id: 111, name: "Champiñón entero", price: 130, category: "Frescos", type: "weight", piecesPerKg: 50, img: "img/champiñones enteros.png", desc: "Fresco a granel." },
+{ id: 110, name: "Brócoli Corona", price: 65, category: "Frescos", type: "weight", piecesPerKg: 1.38, img: "img/brocoli corona.png", desc: "Corona Mister Luck. Cada pieza es un arbolito de unos 720 gramos." },
+{ id: 111, name: "Champiñón entero", price: 130, category: "Frescos", type: "weight", piecesPerKg: 50, platito: 0.3, img: "img/champiñones enteros.png", desc: "Fresco a granel." },
 { id: 112, name: "Col morada", price: 33, category: "Frescos", type: "weight", piecesPerKg: 1, img: "img/col morada.png", desc: "A granel." },
 { id: 113, name: "Calabaza", price: 27, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/calabaza.png", desc: "Calabacita tierna." },
 { id: 114, name: "Rábano", price: 50, category: "Frescos", type: "weight", piecesPerKg: 30, img: "img/rabano.png", desc: "A granel." },
@@ -808,7 +808,7 @@ const db_products = [
 // Frutas grandes: se venden por fracciones
 { id: 132, name: "Piña", price: 24.5, category: "Frescos", type: "fraction", img: "img/piña.png", desc: "Miel.", options: [ {label:"1 Pieza entera", w:1.5}, {label:"Media pieza", w:0.75} ] },
 { id: 133, name: "Melón", price: 27, category: "Frescos", type: "fraction", img: "img/melon.png", desc: "Aromático.", options: [ {label:"1 Pieza entera", w:1.8}, {label:"Media pieza", w:0.9} ] },
-{ id: 134, name: "Sandía", price: 20, category: "Frescos", type: "fraction", img: "img/sandia.png", desc: "Rayada.", options: [ {label:"1 Pieza entera", w:5}, {label:"Media pieza", w:2.5}, {label:"Cuarto de pieza", w:1.25} ] },
+{ id: 134, name: "Sandía", price: 22, category: "Frescos", type: "fraction", img: "img/sandia.png", desc: "Rayada.", options: [ {label:"1 Pieza entera", w:5}, {label:"Media pieza", w:2.5}, {label:"Cuarto de pieza", w:1.25} ] },
 { id: 135, name: "Papaya", price: 24, category: "Frescos", type: "fraction", img: "img/papaya.png", desc: "Maradol.", options: [ {label:"1 Pieza entera", w:1.8}, {label:"Media pieza", w:0.9} ] },
 { id: 137, name: "Lechuga romana", price: 32, category: "Frescos", type: "fraction", img: "img/lechuga romana.png", desc: "Fresca.", options: [ {label:"1 Pieza", w:1}, {label:"Media pieza", w:0.5} ] },
 { id: 146, name: "Chícharos desvainados", price: 251, category: "Frescos", type: "fraction", img: "", icono: "verdura", desc: "Limpios, listos para cocinar.", options: [ {label:"1 Platito (100g)", w:0.1}, {label:"Cuarto (250g)", w:0.25}, {label:"Medio kilo (500g)", w:0.5} ] },
@@ -822,6 +822,7 @@ const db_products = [
 { id: 143, name: "Frambuesa fresca", price: 51, category: "Frescos", type: "standard", img: "img/6.png", desc: "Cajita." },
 { id: 144, name: "Arándano fresco 170 g", price: 50, category: "Frescos", type: "standard", img: "img/7.png", desc: "Cajita." },
 { id: 145, name: "Elote desgranado", price: 24, category: "Frescos", type: "standard", img: "img/8.png", desc: "Bolsa." },
+{ id: 148, name: "Elote blanco", price: 12, category: "Frescos", type: "standard", img: "", icono: "verdura", desc: "Se vende por pieza." },
 
 // ================= LÁCTEOS Y CREMERÍA =================
 { id: 201, name: "Leche Lala 100 tapa dorada 1L", price: 52, category: "Lácteos", type: "standard", img: "img/10.png", desc: "Sin lactosa." },
@@ -848,11 +849,12 @@ const db_products = [
 { id: 223, name: "Queso amarillo FUD 130 g", price: 48, category: "Lácteos", type: "standard", img: "img/32.png", desc: "Rebanadas." },
 { id: 224, name: "Queso panela", price: 74, category: "Lácteos", type: "fraction", img: "img/Panela.png", desc: "Pieza entera o media.", destacado: true, options: [ {label:"1 Pieza", w:1}, {label:"Media pieza", w:0.5} ] },
 { id: 225, name: "Queso fresco chico", price: 29, category: "Lácteos", type: "standard", img: "img/qfc.png", desc: "De rancho." },
+{ id: 219, name: "Queso fresco grande", price: 54, category: "Lácteos", type: "standard", img: "img/qfc.png", desc: "De rancho, pieza grande." },
 { id: 226, name: "Requesón", price: 33, category: "Lácteos", type: "standard", img: "img/33.png", desc: "Tarrina." },
-{ id: 227, name: "Queso asadero de bola", price: 160, category: "Lácteos", type: "deli", img: "img/asab.png", desc: "Se corta al gramaje que pidas." },
+{ id: 227, name: "Queso asadero de bola", price: 160, category: "Lácteos", type: "fraction", img: "img/asab.png", destacado: true, desc: "Nuestro consentido, y con razón. Es de esos quesos que se estiran bonito y saben a leche de verdad, no a paquete. Fúndelo en unas quesadillas y no vas a querer otro. Fresco, suavecito y con ese sabor de rancho que ya casi no se encuentra. Ojo: como es una bola, cada corte sale con su propio peso, por eso las cantidades son aproximadas.", options: [ {label:"Un cuarto (aprox. 270 g)", w:0.27}, {label:"Medio (aprox. 530 g)", w:0.53}, {label:"Un kilo (aprox. 1.05 kg)", w:1.05} ] },
 { id: 228, name: "Queso asadero a granel", price: 150, category: "Lácteos", type: "deli", img: "", icono: "queso", desc: "Se corta al gramaje que pidas." },
 { id: 229, name: "Queso semiseco", price: 190, category: "Lácteos", type: "deli", img: "img/ss.png", desc: "Se corta al gramaje que pidas." },
-{ id: 230, name: "Queso mozzarella granulado", price: 140, category: "Lácteos", type: "deli", img: "img/gran.png", desc: "Para fundir." },
+{ id: 230, name: "Queso mozzarella granulado", price: 191, category: "Lácteos", type: "deli", img: "img/gran.png", desc: "Para fundir." },
 { id: 231, name: "Crema natural", price: 70, category: "Lácteos", type: "deli", unidad: "L", img: "img/crema.png", desc: "A granel, por litro." },
 
 // ================= FIAMBRE =================
@@ -874,7 +876,6 @@ const db_products = [
 { id: 308, name: "Coca-Cola light 1L", price: 26, category: "Bebidas", type: "standard", img: "img/Cl1.png", desc: "Light." },
 { id: 309, name: "Coca-Cola 355ml sin azúcar", price: 12, category: "Bebidas", type: "standard", img: "img/CS35.png", desc: "Lata." },
 { id: 310, name: "Sprite 2L", price: 32, category: "Bebidas", type: "standard", img: "img/sprite.png", desc: "Lima limón." },
-{ id: 311, name: "Sprite 1.75L", price: 29, category: "Bebidas", type: "standard", img: "img/1.75.png", desc: "Mediano." },
 { id: 312, name: "Sprite 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/s6.png", desc: "Personal." },
 { id: 313, name: "Sprite 300ml", price: 12, category: "Bebidas", type: "standard", img: "img/s3.png", desc: "Mini." },
 { id: 314, name: "Sprite sin azúcar 600ml", price: 22, category: "Bebidas", type: "standard", img: "img/ss6.png", desc: "Zero." },
@@ -943,7 +944,8 @@ const db_products = [
 { id: 431, name: "Pan Bimbo Cero Cero 610 g", price: 65, category: "Snacks", type: "standard", img: "img/bimbo cero cero.png", desc: "Sin azúcar." },
 { id: 433, name: "Pan dulce (pieza)", price: 12, category: "Snacks", type: "standard", img: "", icono: "concha", desc: "Surtido local." },
 { id: 434, name: "Concha", price: 15, category: "Snacks", type: "standard", img: "", icono: "concha", desc: "Vainilla o chocolate." },
-{ id: 435, name: "Bolillo", price: 14, category: "Snacks", type: "standard", img: "", icono: "pan", desc: "Pieza." },
+{ id: 435, name: "Bolillo ahogado", price: 14, category: "Snacks", type: "standard", img: "", icono: "pan", desc: "Pieza." },
+{ id: 448, name: "Bolillo", price: 18, category: "Snacks", type: "standard", img: "", icono: "pan", desc: "Pieza recién hecha." },
 { id: 436, name: "Bolillito", price: 14, category: "Snacks", type: "standard", img: "", icono: "pan", desc: "Pieza chica." },
 { id: 437, name: "Telera", price: 18, category: "Snacks", type: "standard", img: "", icono: "pan", desc: "Pieza para torta." },
 { id: 438, name: "Rol de canela", price: 45, category: "Snacks", type: "standard", img: "", icono: "concha", desc: "Horneado." },
@@ -955,11 +957,10 @@ const db_products = [
 { id: 444, name: "Empanada", price: 23, category: "Snacks", type: "standard", img: "", icono: "empanada", desc: "Sujeto a disponibilidad." },
 { id: 445, name: "Crepa mediana", price: 59, category: "Snacks", type: "standard", img: "", icono: "postre", desc: "Preparada." },
 { id: 446, name: "Arroz con leche Majoantojo", price: 27, category: "Snacks", type: "standard", img: "", icono: "postre", desc: "Postre frío." },
-{ id: 447, name: "Yakimeshi", price: 160, category: "Snacks", type: "standard", img: "", icono: "cajita", desc: "Comida preparada." },
 
 // ================= DESPENSA =================
 { id: 501, name: "Huevo rojo", price: 6, category: "Despensa", type: "standard", img: "img/hv.png", desc: "Se vende por pieza suelta.", destacado: true },
-{ id: 502, name: "Huevo blanco", price: 35, category: "Despensa", type: "weight", piecesPerKg: 16, img: "img/hvb.png", desc: "Se vende por kilo. Aproximadamente 16 piezas por kilo.", destacado: true },
+{ id: 502, name: "Huevo blanco", price: 46, category: "Despensa", type: "weight", piecesPerKg: 16, img: "img/hvb.png", desc: "Se vende por kilo. Aproximadamente 16 piezas por kilo.", destacado: true },
 { id: 503, name: "Tortillas Mi Mesa", price: 17, category: "Despensa", type: "standard", img: "", icono: "tortilla", desc: "Paquete.", destacado: true },
 { id: 504, name: "Tortillas Lupita", price: 17, category: "Despensa", type: "weight", piecesPerKg: 1, img: "", icono: "tortilla", desc: "Por kilo." },
 { id: 505, name: "Tortilla de harina Frank M", price: 40, category: "Despensa", type: "standard", img: "", icono: "tortilla", desc: "Paquete." },
