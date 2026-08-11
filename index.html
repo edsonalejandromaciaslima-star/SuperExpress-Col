@@ -105,7 +105,7 @@ header{
 
 /* ============ 2. PORTADA ============ */
 .portada{
-  background:var(--verde-900);color:#fff;padding:46px 22px 74px;text-align:center;position:relative;overflow:hidden
+  background:var(--verde-900);color:#fff;padding:30px 22px 62px;text-align:center;position:relative;overflow:hidden
 }
 /* Toldo de mercado: franjas diagonales muy sutiles */
 .portada::before{
@@ -124,16 +124,16 @@ header{
   padding:7px 15px;border-radius:999px;font-size:11.5px;font-weight:800;
   letter-spacing:1.2px;text-transform:uppercase;margin-bottom:20px
 }
-.portada h1{font-size:clamp(30px,8vw,46px);line-height:1.03;margin-bottom:16px}
+.portada h1{font-size:clamp(27px,7.4vw,44px);line-height:1.05;margin-bottom:12px}
 .portada h1 em{font-style:italic;color:var(--lima);font-weight:700}
-.portada p{font-size:15.5px;opacity:.82;line-height:1.6;max-width:430px;margin:0 auto 26px;font-weight:500}
-.portada-datos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.portada p{font-size:14.5px;opacity:.8;line-height:1.55;max-width:400px;margin:0 auto 20px;font-weight:500}
+.portada-datos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:420px;margin:0 auto}
 .dato{
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
-  padding:11px 17px;border-radius:13px;text-align:left;min-width:104px;backdrop-filter:blur(6px)
+  padding:10px 8px;border-radius:12px;text-align:center;backdrop-filter:blur(6px)
 }
-.dato b{display:block;font-family:'Fraunces',serif;font-size:19px;font-weight:900;color:var(--lima);line-height:1.1}
-.dato span{font-size:10.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;opacity:.72}
+.dato b{display:block;font-family:'Fraunces',serif;font-size:18px;font-weight:900;color:var(--lima);line-height:1.1}
+.dato span{display:block;font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.72;margin-top:3px}
 
 /* ============ 3. TARJETAS INFORMATIVAS ============ */
 .tarjetas-info{max-width:1180px;margin:-46px auto 0;padding:0 18px;position:relative;z-index:10}
@@ -171,6 +171,8 @@ header{
 
 /* ============ 5. CATÁLOGO ============ */
 .contenedor{max-width:1180px;margin:0 auto;padding:34px 18px 20px}
+/* El encabezado es fijo: sin esto tapa el título al saltar a una categoría */
+#ancla-catalogo,.grupo{scroll-margin-top:150px}
 .titulo-seccion{font-size:23px;color:var(--verde-900);display:flex;align-items:center;gap:9px;margin-bottom:3px}
 .categorias{display:flex;gap:9px;overflow-x:auto;padding:5px 0 16px;scrollbar-width:none;scroll-snap-type:x proximity}
 .categorias::-webkit-scrollbar{display:none}
@@ -230,9 +232,11 @@ header{
 .prod{
   background:var(--blanco);border:1px solid var(--borde);border-radius:17px;
   padding:8px 8px 10px;display:flex;flex-direction:column;position:relative;
-  text-align:left;transition:all .26s cubic-bezier(.2,.8,.2,1);width:100%
+  text-align:left;transition:all .26s cubic-bezier(.2,.8,.2,1);width:100%;
+  cursor:pointer;font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent
 }
 .prod:hover{box-shadow:var(--s3);transform:translateY(-3px);border-color:var(--borde-osc)}
+.prod:active{transform:scale(.98)}
 .prod-img{
   width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;margin-bottom:9px;
   background:linear-gradient(160deg,#FAFBF8,#EEF2E9);display:flex;align-items:center;justify-content:center;position:relative
@@ -432,9 +436,13 @@ header{
 @keyframes baja{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes sale{from{opacity:1}to{opacity:0;visibility:hidden}}
 
-.wa-flota{position:fixed;bottom:calc(96px + var(--safe));right:16px;z-index:150;background:#25D366;color:#fff;
-  width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 5px 18px rgba(37,211,102,.42);text-decoration:none;font-size:24px}
+/* Se mantiene abajo, y sube solo cuando aparece la barra del carrito
+   para no quedar encima de los botones de los productos */
+.wa-flota{position:fixed;bottom:calc(18px + var(--safe));right:14px;z-index:150;background:#25D366;color:#fff;
+  width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 5px 18px rgba(37,211,102,.42);text-decoration:none;font-size:21px;
+  transition:bottom .35s cubic-bezier(.2,.8,.2,1)}
+body.con-barra .wa-flota{bottom:calc(94px + var(--safe))}
 
 footer{text-align:center;padding:44px 22px;color:var(--tinta-50);font-size:13.5px;line-height:2;margin-top:24px;
   border-top:1px solid var(--borde)}
@@ -669,8 +677,8 @@ const CONFIG = {
   ],
 
   /* Código promocional. activo:false lo apaga sin borrarlo */
-  promo: { activo:true, codigo:"PRIMERA", tipo:"fijo", valor:30, minimo:150,
-           texto:"$30 de descuento en tu primer pedido de $150 o más" },
+  promo: { activo:true, codigo:"PRIMERA", tipo:"fijo", valor:30, minimo:350,
+           texto:"$30 de descuento en tu primer pedido de $350 o más" },
 
   /* Horarios de entrega. Solo por la tarde/noche, por la escuela.
      Para volver a abrir la mañana, agrega líneas con bloque:"Mañana". */
@@ -1040,7 +1048,15 @@ const plano  = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u
 const unidad = p => p.unidad === 'L' ? 'L' : 'kg';
 
 function emojiDe(cat){ const c = CONFIG.categorias.find(x=>x.nombre===cat); return c ? c.emoji : '🛒'; }
-function dibujoDe(p){ return DIBUJOS[p.icono] || DIBUJOS.cajita; }
+// Si un producto no trae icono propio, se usa el de su categoría.
+// Así una foto que falle nunca cae en una cajita genérica.
+const DIBUJO_CATEGORIA = {
+  "Frescos":"verdura", "Lácteos":"queso", "Fiambre":"carne",
+  "Bebidas":"agua", "Snacks":"snack", "Despensa":"cajita"
+};
+function dibujoDe(p){
+  return DIBUJOS[p.icono] || DIBUJOS[DIBUJO_CATEGORIA[p.category]] || DIBUJOS.cajita;
+}
 // Si la foto falla al cargar, entra el dibujo en su lugar
 function fallo(el, id){
   const p = db_products.find(x=>x.id===id);
@@ -1160,13 +1176,17 @@ function tarjeta(p){
   const boton = p.type === 'standard'
     ? `<button class="mas" onclick="event.stopPropagation();agregarRapido(${p.id},this)" aria-label="Agregar ${seguro(p.name)}">+</button>`
     : `<button class="mas" onclick="event.stopPropagation();abrirProducto(${p.id})" aria-label="Elegir cantidad de ${seguro(p.name)}">+</button>`;
+  // La tarjeta es un div, NO un button: adentro lleva el botón "+" y
+  // el HTML no permite un button dentro de otro (rompe la página).
   return `
-  <button class="prod" onclick="abrirProducto(${p.id})" aria-label="Ver ${seguro(p.name)}">
+  <div class="prod" role="button" tabindex="0" aria-label="Ver ${seguro(p.name)}"
+       onclick="abrirProducto(${p.id})"
+       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirProducto(${p.id})}">
     ${cinta}
     <div class="prod-img">${visual(p)}</div>
     <h3 class="prod-nom">${seguro(p.name)}</h3>
     <div class="prod-pie"><span class="${clase}">${precio}</span>${boton}</div>
-  </button>`;
+  </div>`;
 }
 
 function pintarTop(){
@@ -1497,6 +1517,7 @@ function refrescarCarrito(){
   document.getElementById('fila-desc').style.display = desc > 0 ? 'flex' : 'none';
   document.getElementById('barra-total').textContent = corto(total);
   document.getElementById('barra-abajo').classList.toggle('ver', carrito.length > 0);
+  document.body.classList.toggle('con-barra', carrito.length > 0);
 
   const emp = document.getElementById('empuje');
   const escalon = CONFIG.envio.find(r => r.desde > 0 && sub < r.desde);
