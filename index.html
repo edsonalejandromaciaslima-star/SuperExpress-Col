@@ -444,6 +444,21 @@ header{
   transition:bottom .35s cubic-bezier(.2,.8,.2,1)}
 body.con-barra .wa-flota{bottom:calc(94px + var(--safe))}
 
+/* =========================================================
+   ZOOM EN CELULAR
+   1) touch-action:manipulation quita el zoom por doble toque.
+      El pellizco para acercar SIGUE funcionando, que es
+      importante para quien no ve bien de lejos.
+   2) Los campos de texto van en 16px: si son más chicos,
+      el iPhone hace zoom solo al tocarlos y se ve feo.
+   ========================================================= */
+html{touch-action:manipulation}
+button,a,label,select,input,textarea,.prod,.cat,.opcion,.modo,.dia{touch-action:manipulation}
+
+.buscador input,
+.campo input,.campo select,.campo textarea,
+.cupon input,.libre input{font-size:16px}
+
 footer{text-align:center;padding:44px 22px;color:var(--tinta-50);font-size:13.5px;line-height:2;margin-top:24px;
   border-top:1px solid var(--borde)}
 footer b{font-family:'Fraunces',serif;color:var(--verde-900);font-size:17px}
@@ -765,7 +780,10 @@ cajita:`<svg viewBox="0 0 64 64"><path d="M12 24h40v28a4.5 4.5 0 01-4.5 4.5h-31A
    OPCIONALES:
      destacado:true → sale en "Los más pedidos"
      piecesPerKg    → en "weight": cuántas piezas trae 1 kilo
-     platito:0.28   → agrega botón "1 platito" de ese peso
+     platito:0.28   → agrega botón de porción con ese peso
+     platitoNombre:"Bolsita" → cómo se llama esa porción (default "Platito")
+     sinPiezas:true → oculta el modo "Por piezas"
+     sinCuarto:true → oculta la opción de cuarto de kilo
      unidad:"L"     → deli que se vende por litro (crema)
    ========================================================= */
 // GESTOR:INICIO
@@ -774,7 +792,7 @@ const db_products = [
 // ================= FRESCOS =================
 { id: 147, name: "Limón", price: 42, category: "Frescos", type: "weight", piecesPerKg: 30, img: "", icono: "fruta", desc: "Limón mexicano de la región. Cada pieza pesa entre 30 y 35 gramos.", destacado: true },
 { id: 101, name: "Jitomate", price: 32, category: "Frescos", type: "weight", piecesPerKg: 9, img: "img/jitomate.png", desc: "Ideal para acompañar tus comidas.", destacado: true },
-{ id: 102, name: "Jitomate cherry", price: 80, category: "Frescos", type: "weight", piecesPerKg: 40, platito: 0.4, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas." },
+{ id: 102, name: "Jitomate cherry", price: 80, category: "Frescos", type: "weight", piecesPerKg: 40, sinPiezas: true, platito: 0.4, img: "img/jitomate cherry.png", desc: "Ideal para ensaladas. El platito trae unos 400 gramos." },
 { id: 103, name: "Cebolla", price: 29, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/cebolla.png", desc: "Cebolla blanca.", destacado: true },
 { id: 104, name: "Cebolla morada", price: 23, category: "Frescos", type: "weight", piecesPerKg: 5, img: "img/cebolla morada.png", desc: "Ideal para cortes finos." },
 { id: 105, name: "Papa", price: 48, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/papa.png", desc: "Papa blanca.", destacado: true },
@@ -783,16 +801,16 @@ const db_products = [
 { id: 108, name: "Pepino", price: 25, category: "Frescos", type: "weight", piecesPerKg: 4, img: "img/pepino.png", desc: "Crujiente." },
 { id: 109, name: "Zanahoria", price: 23, category: "Frescos", type: "weight", piecesPerKg: 8, img: "img/zanahoria.png", desc: "Fresca y sin rabo." },
 { id: 110, name: "Brócoli Corona", price: 65, category: "Frescos", type: "weight", piecesPerKg: 1.38, img: "img/brocoli corona.png", desc: "Corona Mister Luck. Cada pieza es un arbolito de unos 720 gramos." },
-{ id: 111, name: "Champiñón entero", price: 130, category: "Frescos", type: "weight", piecesPerKg: 50, platito: 0.3, img: "img/champiñones enteros.png", desc: "Fresco a granel." },
+{ id: 111, name: "Champiñón entero", price: 130, category: "Frescos", type: "weight", piecesPerKg: 50, sinPiezas: true, platito: 0.3, img: "img/champiñones enteros.png", desc: "Fresco a granel. El platito trae unos 300 gramos." },
 { id: 112, name: "Col morada", price: 33, category: "Frescos", type: "weight", piecesPerKg: 1, img: "img/col morada.png", desc: "A granel." },
 { id: 113, name: "Calabaza", price: 27, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/calabaza.png", desc: "Calabacita tierna." },
-{ id: 114, name: "Rábano", price: 50, category: "Frescos", type: "weight", piecesPerKg: 30, img: "img/rabano.png", desc: "A granel." },
+{ id: 114, name: "Rábano", price: 50, category: "Frescos", type: "weight", piecesPerKg: 30, sinPiezas: true, sinCuarto: true, platito: 0.3, platitoNombre: "Bolsita", img: "img/rabano.png", desc: "A granel. La bolsita trae unos 300 gramos, más o menos 9 rábanos." },
 { id: 115, name: "Chile serrano", price: 53, category: "Frescos", type: "weight", piecesPerKg: 40, img: "img/chile serrano.png", desc: "Picante y fresco." },
 { id: 116, name: "Chile habanero", price: 187, category: "Frescos", type: "weight", piecesPerKg: 60, img: "img/chile habanero.png", desc: "Muy picante." },
 { id: 117, name: "Chile pasilla verde", price: 40, category: "Frescos", type: "weight", piecesPerKg: 20, img: "img/chile pasilla verde.png", desc: "A granel." },
-{ id: 118, name: "Espinaca a granel", price: 149, category: "Frescos", type: "weight", piecesPerKg: 10, img: "img/espinaca a granel.png", desc: "Fresca, en bolsas ya hechas." },
+{ id: 118, name: "Espinaca a granel", price: 149, category: "Frescos", type: "weight", piecesPerKg: 10, sinPiezas: true, platito: 0.055, platitoNombre: "Bolsita", img: "img/espinaca a granel.png", desc: "Fresca, en bolsas ya hechas. Cada bolsita trae entre 50 y 60 gramos." },
 { id: 119, name: "Chayote", price: 34, category: "Frescos", type: "weight", piecesPerKg: 3, img: "img/chayote.png", desc: "Sin espinas." },
-{ id: 120, name: "Ejote", price: 82, category: "Frescos", type: "weight", piecesPerKg: 100, platito: 0.28, img: "img/ejote.png", desc: "A granel. El platito trae aproximadamente 280 gramos." },
+{ id: 120, name: "Ejote", price: 82, category: "Frescos", type: "weight", piecesPerKg: 100, sinPiezas: true, platito: 0.28, img: "img/ejote.png", desc: "A granel. El platito trae aproximadamente 280 gramos." },
 { id: 121, name: "Manzana gala", price: 70, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/manzana gala.png", desc: "Dulce y firme." },
 { id: 122, name: "Manzana granny", price: 66, category: "Frescos", type: "weight", piecesPerKg: 6, img: "img/manzana granny.png", desc: "Verde, acidita." },
 { id: 123, name: "Plátano", price: 22, category: "Frescos", type: "weight", piecesPerKg: 7, img: "img/platano.png", desc: "Muy fresco.", destacado: true },
@@ -1263,9 +1281,9 @@ function abrirProducto(id){
     ? dinero(activo.price)
     : `${dinero(activo.price)} <small>por ${unidad(activo)}</small>`;
 
-  // Equivalencia: cuánto sale cada pieza
+  // Equivalencia: cuánto sale cada pieza (solo si sí se vende por pieza)
   const eq = document.getElementById('vp-equiv');
-  if(activo.type === 'weight' && activo.piecesPerKg > 1){
+  if(activo.type === 'weight' && !activo.sinPiezas && activo.piecesPerKg > 1){
     eq.textContent = `≈ ${activo.piecesPerKg} piezas por kilo · cada una sale en ${dinero(activo.price/activo.piecesPerKg)}`;
     eq.style.display = 'inline-block';
   } else { eq.style.display = 'none'; }
@@ -1312,23 +1330,23 @@ function controles(){
   else if(t === 'weight'){
     modo = 'peso';
     sel = { factor:1, etiqueta:'1 Kilo', qty:1 };
-    // Botón de platito solo si el producto lo tiene configurado
-    const platito = activo.platito
-      ? `<button class="opcion" onclick="opcion(this,${activo.platito},'1 Platito')">1 Platito<small>≈ ${Math.round(activo.platito*1000)}g · ${dinero(activo.price*activo.platito)}</small></button>`
+
+    // Porción suelta. Se llama "Platito" salvo que el producto diga otro nombre
+    const nomP = activo.platitoNombre || 'Platito';
+    const gr = activo.platito ? Math.round(activo.platito*1000) : 0;
+    const btnPorcion = activo.platito
+      ? `<button class="opcion" onclick="opcion(this,${activo.platito},'1 ${nomP} (aprox. ${gr} g)')">1 ${nomP}<small>≈ ${gr} g · ${dinero(activo.price*activo.platito)}</small></button>`
       : '';
-    h = `
+    // Hay productos que no se venden por cuarto de kilo
+    const btnCuarto = activo.sinCuarto ? ''
+      : `<button class="opcion" onclick="opcion(this,0.25,'Cuarto de kilo')">Cuarto<small>${dinero(activo.price*0.25)}</small></button>`;
+    // Y otros que no tiene sentido contar por pieza
+    const selector = activo.sinPiezas ? '' : `
     <div class="modos">
       <button class="modo on" id="m-peso" onclick="cambiarModo('peso')">⚖️ Por peso</button>
       <button class="modo" id="m-pieza" onclick="cambiarModo('pieza')">🍋 Por piezas</button>
-    </div>
-    <div id="s-peso">
-      <div class="opciones">
-        <button class="opcion on" onclick="opcion(this,1,'1 Kilo')">1 Kilo<small>${dinero(activo.price)}</small></button>
-        <button class="opcion" onclick="opcion(this,0.5,'Medio kilo')">Medio kilo<small>${dinero(activo.price*0.5)}</small></button>
-        <button class="opcion" onclick="opcion(this,0.25,'Cuarto de kilo')">Cuarto<small>${dinero(activo.price*0.25)}</small></button>
-        ${platito}
-      </div>
-    </div>
+    </div>`;
+    const secPiezas = activo.sinPiezas ? '' : `
     <div id="s-pieza" style="display:none">
       <div class="contador">
         <button class="cont-btn" onclick="piezas(-1)" aria-label="Menos">−</button>
@@ -1337,6 +1355,16 @@ function controles(){
       </div>
       <span class="estimado" id="est"></span>
     </div>`;
+
+    h = `${selector}
+    <div id="s-peso">
+      <div class="opciones">
+        <button class="opcion on" onclick="opcion(this,1,'1 Kilo')">1 Kilo<small>${dinero(activo.price)}</small></button>
+        <button class="opcion" onclick="opcion(this,0.5,'Medio kilo')">Medio kilo<small>${dinero(activo.price*0.5)}</small></button>
+        ${btnCuarto}
+        ${btnPorcion}
+      </div>
+    </div>${secPiezas}`;
   }
   else if(t === 'fraction'){
     sel = { factor:activo.options[0].w, etiqueta:activo.options[0].label, qty:1 };
@@ -1363,7 +1391,7 @@ function controles(){
   }
 
   caja.innerHTML = h;
-  if(t === 'weight') estimar();
+  if(t === 'weight' && !activo.sinPiezas) estimar();
   precioBoton();
 }
 
@@ -1738,4 +1766,3 @@ function aviso(txt){
 </script>
 </body>
 </html>
-u
